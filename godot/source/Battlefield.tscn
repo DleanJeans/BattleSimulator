@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://source/control/PlayerControl.gd" type="Script" id=1]
+[ext_resource path="res://source/warrior/Warrior.tscn" type="PackedScene" id=2]
+
+[node name="Battlefield" type="Node" index="0"]
+
+[node name="Control" type="Node" parent="." index="0"]
+
+[node name="PlayerControl" type="Node" parent="Control" index="0"]
+
+script = ExtResource( 1 )
+warrior_path = NodePath("../../World/Warrior")
+
+[node name="World" type="YSort" parent="." index="1"]
+
+sort_enabled = true
+
+[node name="Warrior" parent="World" index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 510, 300 )
+
+[node name="GUI" type="CanvasLayer" parent="." index="2"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+

@@ -1,5 +1,6 @@
 extends AnimationPlayer
 
+onready var animation_center = get_parent()
 onready var warrior = get_parent().get_parent()
 
 func _playing(animation):

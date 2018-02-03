@@ -1,6 +1,9 @@
 extends "res://source/warrior/AnimationPlayer.gd"
 
 func _process(delta):
+	if animation_center.attacking:
+		return
+	
 	var velocity_x = warrior.velocity.x
 	
 	if velocity_x < 0:

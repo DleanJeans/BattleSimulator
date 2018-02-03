@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://source/control/PlayerControl.gd" type="Script" id=1]
 [ext_resource path="res://source/warrior/Warrior.tscn" type="PackedScene" id=2]
+[ext_resource path="res://source/gui/PlayerPointer.tscn" type="PackedScene" id=3]
 
 [node name="Battlefield" type="Node" index="0"]
 
@@ -15,17 +16,22 @@ warrior_path = NodePath("../../World/Warrior")
 [node name="World" type="YSort" parent="." index="1"]
 
 sort_enabled = true
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Warrior" parent="World" index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 510, 300 )
+position = Vector2( 510, 290 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index", "collision" ]
 
-[node name="GUI" type="CanvasLayer" parent="." index="2"]
+[node name="Warrior2" parent="World" index="1" instance=ExtResource( 2 )]
 
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+position = Vector2( 320, 330 )
+
+[node name="GUI" type="Node" parent="." index="2"]
+
+[node name="PlayerPointer" parent="GUI" index="0" instance=ExtResource( 3 )]
+
+z_index = -1
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
 
 

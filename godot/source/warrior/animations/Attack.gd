@@ -1,4 +1,4 @@
-extends "res://source/warrior/AnimationPlayer.gd"
+extends "res://source/warrior/animations/AnimationPlayer.gd"
 
 const ATTACK_LEFT = "AttackLeft"
 const ATTACK_RIGHT = "AttackRight"

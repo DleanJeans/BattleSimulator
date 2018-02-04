@@ -1,4 +1,4 @@
-extends "res://source/warrior/AnimationPlayer.gd"
+extends "res://source/warrior/animations/AnimationPlayer.gd"
 
 func _process(delta):
 	if animation_center.attacking:

@@ -1,4 +1,4 @@
-extends "res://source/warrior/AnimationPlayer.gd"
+extends "res://source/warrior/animations/AnimationPlayer.gd"
 
 const BOBBING = "Bobbing"
 const STOP = "Stop"
@@ -6,7 +6,7 @@ const STOP = "Stop"
 func _process(delta):
 	if _moving_fast_enough():
 		start_bobbing()
-	else:
+	elif is_playing():
 		stop_bobbing()
 
 func _moving_fast_enough():

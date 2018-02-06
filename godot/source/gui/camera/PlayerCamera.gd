@@ -1,12 +1,15 @@
-extends Sprite
+extends Node2D
 
 export(NodePath) var player_path setget set_player_path
 
 var warrior
 
-func _process(delta):
+func _physics_process(delta):
+	_update_position()
+
+func _update_position():
 	if warrior != null:
-		position = warrior.global_position
+		position = warrior.position
 
 func set_player_path(path):
 	player_path = path

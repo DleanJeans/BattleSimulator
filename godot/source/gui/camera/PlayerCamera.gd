@@ -1,21 +1,21 @@
 extends Node2D
 
-export(NodePath) var player_path setget set_player_path
+export(float) var zoom = 1 setget set_zoom
 
-var warrior
+var player
 
 func _physics_process(delta):
 	_update_position()
 
 func _update_position():
-	if warrior != null:
-		position = warrior.position
+	if player != null:
+		position = player.position
 
-func set_player_path(path):
-	player_path = path
-	
-	call_deferred("_update_warrior")
 
-func _update_warrior():
-	if player_path != null:
-		warrior = get_node(player_path)
+func set_zoom(new_zoom):
+	zoom = new_zoom
+	if has_node("Camera"):
+		$Camera.zoom = Vector2(1, 1) * zoom
+
+func set_player(new_player):
+	player = new_player

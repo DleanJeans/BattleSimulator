@@ -1,42 +1,55 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://source/logic/PlayerControl.gd" type="Script" id=1]
-[ext_resource path="res://source/logic/health/Health.gd" type="Script" id=2]
-[ext_resource path="res://source/warrior/Warrior.tscn" type="PackedScene" id=3]
-[ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://source/nonlogic/TroopCreator.gd" type="Script" id=1]
+[ext_resource path="res://source/PlayerRandomizer.gd" type="Script" id=2]
+[ext_resource path="res://source/logic/PlayerControl.gd" type="Script" id=3]
+[ext_resource path="res://source/logic/health/Health.gd" type="Script" id=4]
+[ext_resource path="res://source/logic/PlayerTracker.gd" type="Script" id=5]
+[ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=6]
 
 [node name="Battlefield" type="Node" index="0"]
 
-[node name="Logic" type="Node" parent="." index="0"]
+[node name="Creator" type="Node" parent="." index="0"]
+
+[node name="TroopCreator" type="Node2D" parent="Creator" index="0"]
+
+script = ExtResource( 1 )
+spacing = Vector2( 100, 100 )
+world_path = NodePath("../../World")
+
+[node name="PlayerRandomizer" type="Node" parent="Creator" index="1"]
+
+script = ExtResource( 2 )
+
+[node name="Logic" type="Node" parent="." index="1"]
 
 [node name="PlayerControl" type="Node" parent="Logic" index="0"]
 
-script = ExtResource( 1 )
-warrior_path = NodePath("../../World/Warrior")
+script = ExtResource( 3 )
 
 [node name="Health" type="Node" parent="Logic" index="1"]
 
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 WARRIOR_HEALTH = 1
 scan_node_childen = NodePath("../../World")
 
-[node name="World" type="YSort" parent="." index="1"]
+[node name="PlayerTracker" type="Node" parent="Logic" index="2"]
+
+script = ExtResource( 5 )
+
+[node name="World" type="YSort" parent="." index="2"]
 
 sort_enabled = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Warrior" parent="World" index="0" instance=ExtResource( 3 )]
+[node name="GUI" type="Node" parent="." index="3"]
 
-light_mask = 2
-position = Vector2( 230, 120 )
-_sections_unfolded = [ "Collision", "Material", "Pause", "Transform", "Visibility", "Z Index", "collision" ]
+[node name="PlayerCamera" parent="GUI" index="0" instance=ExtResource( 6 )]
 
-[node name="Warrior2" parent="World" index="1" instance=ExtResource( 3 )]
+zoom = 2.5
 
-position = Vector2( 430, 310 )
+[connection signal="player_changed" from="Logic/PlayerTracker" to="Logic/PlayerControl" method="set_player"]
 
-[node name="GUI" type="Node" parent="." index="2"]
-
-[node name="PlayerCamera" parent="GUI" index="0" instance=ExtResource( 4 )]
+[connection signal="player_changed" from="Logic/PlayerTracker" to="GUI/PlayerCamera" method="set_player"]
 
 

@@ -1,7 +1,6 @@
 extends Node
 
-export(NodePath) var warrior_path
-onready var warrior = get_node(warrior_path)
+var player setget set_player
 
 const UP = "up"
 const DOWN = "down"
@@ -11,13 +10,16 @@ const ATTACK = "attack"
 
 func _physics_process(delta):
 	if Input.is_action_pressed(UP):
-		warrior.move.up()
+		player.move.up()
 	if Input.is_action_pressed(DOWN):
-		warrior.move.down()
+		player.move.down()
 	if Input.is_action_pressed(LEFT):
-		warrior.move.left()
+		player.move.left()
 	if Input.is_action_pressed(RIGHT):
-		warrior.move.right()
+		player.move.right()
 	
 	if Input.is_action_just_pressed(ATTACK):
-		warrior.attack()
+		player.attack()
+
+func set_player(new_player):
+	player = new_player

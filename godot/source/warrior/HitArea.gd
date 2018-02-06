@@ -9,4 +9,4 @@ func _on_area_entered(weapon):
 func _weapon_is_from_enemy(weapon):
 	var weapon_owner = weapon.get_parent().get_parent()
 	
-	return warrior != weapon_owner
+	return warrior.team != weapon_owner.team

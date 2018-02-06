@@ -40,9 +40,10 @@ attack=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":""
 [layer_names]
 
 2d_physics/layer_1="Feet"
+2d_render/layer_2="Highlight"
 2d_physics/layer_2="Weapons"
-2d_physics/layer_3="Body"
-2d_physics/layer_4="Body2"
+2d_physics/layer_11="Body1"
+2d_physics/layer_12="Body2"
 
 [rendering]
 

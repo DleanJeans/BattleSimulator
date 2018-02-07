@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://source/ai/steering/Steering.gd" type="Script" id=1]
+[ext_resource path="res://source/ai/steering/behaviors/Seek.gd" type="Script" id=2]
+[ext_resource path="res://source/ai/steering/behaviors/Arrive.gd" type="Script" id=3]
+[ext_resource path="res://source/ai/steering/behaviors/Flee.gd" type="Script" id=4]
+
+[node name="Steering" type="Node"]
+
+script = ExtResource( 1 )
+total_force = 250
+host_path = ".."
+
+[node name="Seek" type="Node" parent="." index="0"]
+
+script = ExtResource( 2 )
+multiplier = 1
+is_on = false
+
+[node name="Arrive" type="Node" parent="." index="1"]
+
+script = ExtResource( 3 )
+multiplier = 1
+is_on = false
+deceleration = 0.5
+
+[node name="Flee" type="Node" parent="." index="2"]
+
+script = ExtResource( 4 )
+multiplier = 1
+is_on = false
+
+

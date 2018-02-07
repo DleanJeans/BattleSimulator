@@ -15,7 +15,6 @@
 [ext_resource path="res://source/warrior/animations/Hit.gd" type="Script" id=13]
 [ext_resource path="res://source/warrior/animations/Die.gd" type="Script" id=14]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 
 render_priority = 0
@@ -33,8 +32,8 @@ height = 20.0
 [sub_resource type="CapsuleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 25.0
-height = 51.1804
+radius = 22.0
+height = 56.0
 
 [sub_resource type="Animation" id=4]
 
@@ -51,7 +50,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -15, -40 ) ]
+"values": [ Vector2( -20, -35 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Sprite/Sword/Sprite:flip_h")
@@ -63,7 +62,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../Sprite:flip_h")
@@ -93,7 +92,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 30, -40 ) ]
+"values": [ Vector2( 30, -35 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Sprite/Sword/Sprite:flip_h")
@@ -105,7 +104,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../Sprite:flip_h")
@@ -345,7 +344,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -15, -40 ), Vector2( -55, -40 ) ]
+"values": [ Vector2( -15, -40 ), Vector2( -65, -40 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Sprite/Sword:rotation_degrees")
@@ -447,7 +446,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 30, -40 ), Vector2( 55, -40 ) ]
+"values": [ Vector2( 30, -40 ), Vector2( 65, -40 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Sprite/Sword:rotation_degrees")
@@ -510,7 +509,7 @@ tracks/7/keys = {
 "values": [ false, true ]
 }
 
-[node name="Warrior" type="KinematicBody2D" index="0" groups=[
+[node name="Warrior" type="KinematicBody2D" groups=[
 "Warriors",
 ]]
 
@@ -552,7 +551,6 @@ __meta__ = {
 
 [node name="Shape" type="CollisionShape2D" parent="HitArea" index="0"]
 
-visible = false
 shape = SubResource( 3 )
 
 [node name="Shadow" type="Sprite" parent="." index="2"]
@@ -567,13 +565,12 @@ _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 texture = ExtResource( 5 )
 offset = Vector2( 0, -50 )
-flip_h = true
 region_rect = Rect2( 15, 24, 6, 20 )
 _sections_unfolded = [ "Material", "Offset", "Transform", "Visibility" ]
 
 [node name="Sword" parent="Sprite" index="0" instance=ExtResource( 6 )]
 
-position = Vector2( 30, -40 )
+position = Vector2( -20, -35 )
 monitorable = true
 collision_mask = 3072
 

@@ -1,39 +1,39 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://source/nonlogic/TroopCreator.gd" type="Script" id=1]
-[ext_resource path="res://source/nonlogic/PlayerRandomizer.gd" type="Script" id=2]
-[ext_resource path="res://source/logic/PlayerControl.gd" type="Script" id=3]
-[ext_resource path="res://source/logic/health/Health.gd" type="Script" id=4]
-[ext_resource path="res://source/logic/PlayerTracker.gd" type="Script" id=5]
+[ext_resource path="res://source/helpers/TroopCreator.gd" type="Script" id=1]
+[ext_resource path="res://source/helpers/PlayerRandomizer.gd" type="Script" id=2]
+[ext_resource path="res://source/mechanics/PlayerControl.gd" type="Script" id=3]
+[ext_resource path="res://source/mechanics/health/Health.gd" type="Script" id=4]
+[ext_resource path="res://source/mechanics/PlayerTracker.gd" type="Script" id=5]
 [ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=6]
 
 [node name="Battlefield" type="Node" index="0"]
 
-[node name="Creator" type="Node" parent="." index="0"]
+[node name="Helpers" type="Node" parent="." index="0"]
 
-[node name="TroopCreator" type="Node2D" parent="Creator" index="0"]
+[node name="TroopCreator" type="Node2D" parent="Helpers" index="0"]
 
 script = ExtResource( 1 )
 spacing = Vector2( 100, 100 )
 world_path = NodePath("../../World")
 
-[node name="PlayerRandomizer" type="Node" parent="Creator" index="1"]
+[node name="PlayerRandomizer" type="Node" parent="Helpers" index="1"]
 
 script = ExtResource( 2 )
 
-[node name="Logic" type="Node" parent="." index="1"]
+[node name="Mechanics" type="Node" parent="." index="1"]
 
-[node name="PlayerControl" type="Node" parent="Logic" index="0"]
+[node name="PlayerControl" type="Node" parent="Mechanics" index="0"]
 
 script = ExtResource( 3 )
 
-[node name="Health" type="Node" parent="Logic" index="1"]
+[node name="Health" type="Node" parent="Mechanics" index="1"]
 
 script = ExtResource( 4 )
 WARRIOR_HEALTH = 1
 scan_node_childen = NodePath("../../World")
 
-[node name="PlayerTracker" type="Node" parent="Logic" index="2"]
+[node name="PlayerTracker" type="Node" parent="Mechanics" index="2"]
 
 script = ExtResource( 5 )
 
@@ -46,10 +46,10 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="PlayerCamera" parent="GUI" index="0" instance=ExtResource( 6 )]
 
-zoom = 2.5
+zoom = 1.5
 
-[connection signal="player_changed" from="Logic/PlayerTracker" to="Logic/PlayerControl" method="set_player"]
+[connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerCamera" method="set_player"]
 
-[connection signal="player_changed" from="Logic/PlayerTracker" to="GUI/PlayerCamera" method="set_player"]
+[connection signal="player_changed" from="Mechanics/PlayerTracker" to="Mechanics/PlayerControl" method="set_player"]
 
 

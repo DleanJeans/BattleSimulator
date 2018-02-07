@@ -1,6 +1,6 @@
 extends Node
 
-onready var PlayerTracker = $"/root/Battlefield/Logic/PlayerTracker"
+onready var PlayerTracker = $"/root/Battlefield/Mechanics/PlayerTracker"
 
 func choose_randomly():
 	var all_warriors = get_tree().get_nodes_in_group("Warriors")

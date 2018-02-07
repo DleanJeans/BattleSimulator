@@ -15,8 +15,6 @@ func right():
 	move(Const.RIGHT)
 
 func move(direction):
-	if warrior.animations.attacking: return
-	
 	var added_velocity = direction * warrior.speed
 	velocity += added_velocity
 

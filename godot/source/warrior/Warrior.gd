@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal hit(me, damage)
+signal hit_by_weapon(weapon)
 signal died
 
 export(String, "Team 1", "Team 2") var team setget set_team

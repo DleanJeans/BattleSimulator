@@ -1,13 +1,15 @@
+tool
 extends KinematicBody2D
 
 signal hit(me, damage)
 signal hit_by_weapon(weapon)
 signal died
 
-export(String, "Team 1", "Team 2") var team setget set_team
+export(String, "TeamRed", "TeamPurple") var team setget set_team
 
 export(int) var speed = 250
 export(int) var speed_drag = 0.9
+export(float) var attack_duration = 0.5
 
 onready var sprite = $Sprite
 onready var sword = $Sprite/Sword

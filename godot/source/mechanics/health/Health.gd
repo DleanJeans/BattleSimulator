@@ -10,6 +10,14 @@ onready var _node_to_scan = get_node(scan_node_childen)
 var _processed_warrior
 var _processed_health
 
+func get_health(warrior):
+	_set_processed_warrior(warrior)
+	return _processed_health.health
+
+func is_dead(warrior):
+	_set_processed_warrior(warrior)
+	return _processed_health.is_health_zero()
+
 func _ready():
 	scan_warriors()
 

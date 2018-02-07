@@ -523,6 +523,7 @@ _sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "coll
 team = null
 speed = 250
 speed_drag = 0.9
+attack_duration = 0.5
 
 [node name="Feet" type="CollisionShape2D" parent="." index="0"]
 

@@ -1,3 +1,4 @@
+tool
 extends "res://source/warrior/Code.gd"
 
 var TeamRed = {
@@ -15,8 +16,13 @@ func set_team(team_name):
 
 func _set_team(team_name):
 	var team = get(team_name)
+	
+	_set_group(team_name)
 	_set_layer(team.layer)
 	_change_color_for_team_purple(team_name) 
+
+func _set_group(team_name):
+	warrior.add_to_group(team_name)
 
 func _set_layer(layer):
 	warrior.hit_area.collision_layer = layer

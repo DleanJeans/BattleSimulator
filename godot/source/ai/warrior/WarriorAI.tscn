@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://source/ai/warrior/WarriorAI.gd" type="Script" id=1]
+[ext_resource path="res://source/ai/warrior/Move.gd" type="Script" id=2]
+[ext_resource path="res://source/ai/steering/Steering.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/ai/warrior/Attack.gd" type="Script" id=4]
+[ext_resource path="res://source/ai/warrior/Locator.gd" type="Script" id=5]
+
+[node name="WarriorAI" type="Node"]
+
+script = ExtResource( 1 )
+thoughts_per_second = 5
+enabled = true
+host_path = null
+health_mechanic_path = null
+
+[node name="Move" type="Node" parent="." index="0"]
+
+script = ExtResource( 2 )
+point_radius = 5
+
+[node name="Steering" parent="Move" index="0" instance=ExtResource( 3 )]
+
+[node name="Attack" type="Node" parent="." index="1"]
+
+script = ExtResource( 4 )
+
+[node name="Locator" type="Node" parent="." index="2"]
+
+script = ExtResource( 5 )
+
+

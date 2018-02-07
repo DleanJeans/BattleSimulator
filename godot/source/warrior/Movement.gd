@@ -3,18 +3,20 @@ extends "res://source/warrior/Code.gd"
 var velocity = Vector2()
 
 func up():
-	move(Const.UP)
+	towards(Const.UP)
 
 func down():
-	move(Const.DOWN)
+	towards(Const.DOWN)
 
 func left():
-	move(Const.LEFT)
+	towards(Const.LEFT)
 
 func right():
-	move(Const.RIGHT)
+	towards(Const.RIGHT)
 
-func move(direction):
+func towards(direction):
+	if direction.length_squared() > 1:
+		direction = direction.normalized()
 	var added_velocity = direction * warrior.speed
 	velocity += added_velocity
 

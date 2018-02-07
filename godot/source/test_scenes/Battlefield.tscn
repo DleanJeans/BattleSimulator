@@ -20,12 +20,15 @@ world_path = NodePath("../../World")
 [node name="PlayerRandomizer" type="Node" parent="Helpers" index="1"]
 
 script = ExtResource( 2 )
+player_tracker_path = NodePath("../../Mechanics/PlayerTracker")
 
 [node name="Mechanics" type="Node" parent="." index="1"]
 
 [node name="PlayerControl" type="Node" parent="Mechanics" index="0"]
 
 script = ExtResource( 3 )
+player_path = null
+health_mechanic_path = null
 
 [node name="Health" type="Node" parent="Mechanics" index="1"]
 
@@ -37,12 +40,16 @@ scan_node_childen = NodePath("../../World")
 
 script = ExtResource( 5 )
 
-[node name="World" type="YSort" parent="." index="2"]
+[node name="AI" type="Node" parent="." index="2"]
+
+[node name="GroupAI" type="Node" parent="AI" index="0"]
+
+[node name="World" type="YSort" parent="." index="3"]
 
 sort_enabled = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="GUI" type="Node" parent="." index="3"]
+[node name="GUI" type="Node" parent="." index="4"]
 
 [node name="PlayerCamera" parent="GUI" index="0" instance=ExtResource( 6 )]
 

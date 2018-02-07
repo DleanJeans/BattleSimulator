@@ -12,8 +12,11 @@ func _init(warrior, health):
 func lose(damage):
 	self.health -= damage
 	
-	if self.health <= 0:
+	if is_health_zero():
 		die()
+
+func is_health_zero():
+	return health <= 0
 
 func die():
 	emit_signal("hit_zero", warrior)

@@ -1,6 +1,7 @@
 extends Node
 
-onready var PlayerTracker = $"/root/Battlefield/Mechanics/PlayerTracker"
+export(NodePath) var player_tracker_path
+onready var PlayerTracker = get_node(player_tracker_path)
 
 func choose_randomly():
 	var all_warriors = get_tree().get_nodes_in_group("Warriors")

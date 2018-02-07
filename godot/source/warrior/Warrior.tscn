@@ -1,18 +1,27 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://source/warrior/Warrior.gd" type="Script" id=1]
-[ext_resource path="res://source/warrior/HitArea.gd" type="Script" id=2]
-[ext_resource path="res://source/warrior/Movement.gd" type="Script" id=3]
-[ext_resource path="res://source/warrior/Team.gd" type="Script" id=4]
-[ext_resource path="res://source/warrior/animations/Animations.gd" type="Script" id=5]
-[ext_resource path="res://source/warrior/animations/Flip.gd" type="Script" id=6]
-[ext_resource path="res://source/warrior/animations/Bob.gd" type="Script" id=7]
-[ext_resource path="res://source/warrior/animations/Attack.gd" type="Script" id=8]
-[ext_resource path="res://source/warrior/animations/Hit.gd" type="Script" id=9]
-[ext_resource path="res://source/warrior/animations/Die.gd" type="Script" id=10]
-[ext_resource path="res://assets/png/Circle.png" type="Texture" id=11]
-[ext_resource path="res://assets/png/Warrior.png" type="Texture" id=12]
-[ext_resource path="res://source/warrior/Sword.tscn" type="PackedScene" id=13]
+[ext_resource path="res://source/warrior/Purplizer.shader" type="Shader" id=1]
+[ext_resource path="res://source/warrior/Warrior.gd" type="Script" id=2]
+[ext_resource path="res://source/warrior/HitArea.gd" type="Script" id=3]
+[ext_resource path="res://source/warrior/Movement.gd" type="Script" id=4]
+[ext_resource path="res://source/warrior/Team.gd" type="Script" id=5]
+[ext_resource path="res://source/warrior/animations/Animations.gd" type="Script" id=6]
+[ext_resource path="res://source/warrior/animations/Flip.gd" type="Script" id=7]
+[ext_resource path="res://source/warrior/animations/Bob.gd" type="Script" id=8]
+[ext_resource path="res://source/warrior/animations/Attack.gd" type="Script" id=9]
+[ext_resource path="res://source/warrior/animations/Hit.gd" type="Script" id=10]
+[ext_resource path="res://source/warrior/animations/Die.gd" type="Script" id=11]
+[ext_resource path="res://assets/png/Circle.png" type="Texture" id=12]
+[ext_resource path="res://assets/png/Warrior.png" type="Texture" id=13]
+[ext_resource path="res://source/warrior/Sword.tscn" type="PackedScene" id=14]
+
+[sub_resource type="ShaderMaterial" id=13]
+
+render_priority = 0
+shader = ExtResource( 1 )
+shader_param/default_hue = 15.0
+shader_param/replace_color = Color( 0.607843, 0.141176, 0.941176, 1 )
+_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -20,13 +29,13 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 20.0
 
-[sub_resource type="CapsuleShape2D" id=11]
+[sub_resource type="CapsuleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 25.0
 height = 51.1804
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
 length = 0.01
 loop = false
@@ -68,7 +77,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
 length = 0.01
 loop = false
@@ -110,7 +119,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
 length = 0.3
 loop = true
@@ -140,7 +149,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -5 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
 length = 0.01
 loop = false
@@ -170,7 +179,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 
 length = 0.5
 loop = false
@@ -224,9 +233,8 @@ tracks/3/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
-resource_name = "AttackRight"
 length = 0.5
 loop = false
 step = 0.05
@@ -279,9 +287,8 @@ tracks/3/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
-resource_name = "Hit"
 length = 0.2
 loop = false
 step = 0.1
@@ -298,9 +305,8 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
-resource_name = "DieLeft"
 length = 0.2
 loop = false
 step = 0.1
@@ -401,9 +407,8 @@ tracks/7/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 
-resource_name = "DieRight"
 length = 0.2
 loop = false
 step = 0.1
@@ -504,16 +509,17 @@ tracks/7/keys = {
 "values": [ false, true ]
 }
 
-[node name="Warrior" type="KinematicBody2D" groups=[
+[node name="Warrior" type="KinematicBody2D" index="0" groups=[
 "Warriors",
 ]]
 
+material = SubResource( 13 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 1.0
-script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform", "Visibility", "collision" ]
+script = ExtResource( 2 )
+_sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "collision" ]
 team = null
 speed = 250
 speed_drag = 0.9
@@ -537,7 +543,7 @@ collision_layer = 0
 collision_mask = 0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_lock_": true
@@ -546,21 +552,21 @@ __meta__ = {
 [node name="Shape" type="CollisionShape2D" parent="HitArea" index="0"]
 
 visible = false
-shape = SubResource( 11 )
+shape = SubResource( 2 )
 
 [node name="Code" type="Node" parent="." index="2"]
 
 [node name="Movement" type="Node" parent="Code" index="0"]
 
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="Team" type="Node" parent="Code" index="1"]
 
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Animations" type="Node" parent="." index="3"]
 
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="Flip" type="AnimationPlayer" parent="Animations" index="0"]
 
@@ -569,10 +575,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Left = SubResource( 2 )
-anims/Right = SubResource( 3 )
+anims/Left = SubResource( 3 )
+anims/Right = SubResource( 4 )
 blend_times = [  ]
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="Bob" type="AnimationPlayer" parent="Animations" index="1"]
 
@@ -581,10 +587,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Bobbing = SubResource( 4 )
-anims/Stop = SubResource( 5 )
+anims/Bobbing = SubResource( 5 )
+anims/Stop = SubResource( 6 )
 blend_times = [ "Bobbing", "Stop", 0.5 ]
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="Attack" type="AnimationPlayer" parent="Animations" index="2"]
@@ -594,10 +600,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.1
 playback_speed = 1.0
-anims/AttackLeft = SubResource( 6 )
-anims/AttackRight = SubResource( 7 )
+anims/AttackLeft = SubResource( 7 )
+anims/AttackRight = SubResource( 8 )
 blend_times = [ "Bobbing", "Stop", 0.5 ]
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="Hit" type="AnimationPlayer" parent="Animations" index="3"]
@@ -607,9 +613,9 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Hit = SubResource( 8 )
+anims/Hit = SubResource( 9 )
 blend_times = [  ]
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="Die" type="AnimationPlayer" parent="Animations" index="4"]
 
@@ -618,27 +624,28 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/DieLeft = SubResource( 9 )
-anims/DieRight = SubResource( 10 )
+anims/DieLeft = SubResource( 10 )
+anims/DieRight = SubResource( 11 )
 blend_times = [  ]
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="Shadow" type="Sprite" parent="." index="4"]
 
 modulate = Color( 0, 0, 0, 0.25 )
 position = Vector2( 0, -5 )
 scale = Vector2( 0.5, 0.2 )
-texture = ExtResource( 11 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 12 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="Sprite" type="Sprite" parent="." index="5"]
 
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 offset = Vector2( 0, -50 )
 flip_h = true
-_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+region_rect = Rect2( 15, 24, 6, 20 )
+_sections_unfolded = [ "Material", "Offset", "Transform", "Visibility" ]
 
-[node name="Sword" parent="Sprite" index="0" instance=ExtResource( 13 )]
+[node name="Sword" parent="Sprite" index="0" instance=ExtResource( 14 )]
 
 position = Vector2( 30, -40 )
 monitorable = true

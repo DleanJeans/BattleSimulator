@@ -37,8 +37,12 @@ func _connect_signals():
 
 func _on_warrior_hit(warrior, damage):
 	_set_processed_warrior(warrior)
+	_print_debug(warrior, damage)
 	_processed_health.lose(damage)
-	print("%s received %s damage - %s HP left" % [warrior.name, damage, _processed_health.health])
+
+func _print_debug(warrior, damage):
+	var hp_left = _processed_health.health - damage
+	print("%s received %s damage - %s HP left" % [warrior.name, damage, hp_left])
 
 func _on_health_hit_zero(warrior):
 	warrior.die()

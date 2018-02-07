@@ -5,9 +5,9 @@ export(NodePath) var world_path
 onready var world = get_node(world_path)
 
 func _ready():
-	create_troops(Const.TEAM1, 10, 10)
+	create_troops(Const.TEAM_RED, 10, 10)
 	position.x += 1250
-	create_troops(Const.TEAM2, 10, 10)
+	create_troops(Const.TEAM_PURPLE, 10, 10)
 
 func create_troops(team, rows = 2, columns = 5):
 	for x in range(0, rows):

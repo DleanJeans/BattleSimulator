@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://source/ai/troop/TroopAI.gd" type="Script" id=1]
+[ext_resource path="res://source/ai/troop/Move.gd" type="Script" id=2]
+[ext_resource path="res://source/ai/steering/Steering.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/ai/troop/Locator.gd" type="Script" id=4]
+
+[node name="TroopAI" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+thoughts_per_second = 5
+enabled = true
+
+[node name="SubAI" type="Node" parent="." index="0"]
+
+[node name="Move" type="Node2D" parent="." index="1"]
+
+script = ExtResource( 2 )
+near_distance_threshold = 50
+
+[node name="Steering" parent="Move" index="0" instance=ExtResource( 3 )]
+
+character_path = ".."
+
+[node name="Locator" type="Node2D" parent="." index="2"]
+
+script = ExtResource( 4 )
+
+

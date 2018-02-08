@@ -1,15 +1,18 @@
 extends Node
 
 export(int) var total_force = 250
-export(NodePath) var host_path = ".."
+export(NodePath) var character_path = ".."
 
 var priorities = ["Arrive", "Flee", "Seek"]
 
 var _steering_velocity
 var _force_left
 
-func get_host():
-	return get_node(host_path)
+func get_character():
+	return get_node(character_path)
+
+func set_character(character):
+	character_path = character.get_path()
 
 func steer():
 	_steering_velocity = Vector2()

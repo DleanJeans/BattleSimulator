@@ -3,11 +3,11 @@
 [ext_resource path="res://source/helpers/TroopCreator.gd" type="Script" id=1]
 [ext_resource path="res://source/helpers/PlayerRandomizer.gd" type="Script" id=2]
 [ext_resource path="res://source/mechanics/PlayerControl.gd" type="Script" id=3]
-[ext_resource path="res://source/mechanics/health/Health.gd" type="Script" id=4]
-[ext_resource path="res://source/mechanics/PlayerTracker.gd" type="Script" id=5]
+[ext_resource path="res://source/mechanics/PlayerTracker.gd" type="Script" id=4]
+[ext_resource path="res://source/mechanics/health/Health.gd" type="Script" id=5]
 [ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=6]
 
-[node name="Battlefield" type="Node" index="0"]
+[node name="Battlefield" type="Node"]
 
 [node name="Helpers" type="Node" parent="." index="0"]
 
@@ -16,6 +16,7 @@
 script = ExtResource( 1 )
 spacing = Vector2( 100, 100 )
 world_path = NodePath("../../World")
+ai_core_path = NodePath("../../AICore")
 
 [node name="PlayerRandomizer" type="Node" parent="Helpers" index="1"]
 
@@ -30,19 +31,17 @@ script = ExtResource( 3 )
 player_path = null
 health_mechanic_path = null
 
-[node name="Health" type="Node" parent="Mechanics" index="1"]
+[node name="PlayerTracker" type="Node" parent="Mechanics" index="1"]
 
 script = ExtResource( 4 )
-WARRIOR_HEALTH = 1
-scan_node_childen = NodePath("../../World")
 
-[node name="PlayerTracker" type="Node" parent="Mechanics" index="2"]
+[node name="Health" type="Node" parent="Mechanics" index="2"]
 
 script = ExtResource( 5 )
+WARRIOR_HEALTH = 5
+scan_node_childen = NodePath("../../World")
 
-[node name="AI" type="Node" parent="." index="2"]
-
-[node name="GroupAI" type="Node" parent="AI" index="0"]
+[node name="AICore" type="Node" parent="." index="2"]
 
 [node name="World" type="YSort" parent="." index="3"]
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://source/ai/warrior/Move.gd" type="Script" id=1]
+[ext_resource path="res://source/ai/steering/Steering.tscn" type="PackedScene" id=2]
+[ext_resource path="res://source/ai/steering/Steering.gd" type="Script" id=3]
+
+[node name="Move" type="Node"]
+
+script = ExtResource( 1 )
+low_speed_threshold = 5
+
+[node name="Steering" type="Node" parent="." index="0" instance=ExtResource( 2 )]
+
+script = ExtResource( 3 )
+total_force = 250
+host_path = ".."
+
+

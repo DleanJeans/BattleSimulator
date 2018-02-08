@@ -1,25 +1,22 @@
-extends "res://source/ai/warrior/AINode.gd"
+extends Node
 
 var target
 
-func kill(target):
+func start_attacking(target):
 	self.target = target
 	while _target_not_dead():
 		attack()
 		yield(_timer_for_attack_duration(), "timeout")
 
 func _timer_for_attack_duration():
-	var host = get_parent().get_host()
-	var attack_duration = host.attack_duration
+	var character = get_parent().get_character()
+	var attack_duration = character.attack_duration
 	
 	return get_tree().create_timer(attack_duration)
 
 func _target_not_dead():
-	var health_mechanic = get_parent().get_health_mechanic()
-	if health_mechanic != null:
-		return not health_mechanic.is_dead(target) 
-	return true
+	return target != null and not target.is_dead()
 
 func attack():
-	var host = get_parent().get_host()
-	host.attack()
+	var character = get_parent().get_character()
+	character.attack()

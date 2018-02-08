@@ -9,7 +9,7 @@ func flee_target():
 	return flee(target)
 
 func flee(target_position):
-	var distance_squared = target_position.distance_to(get_host().position) + 1
-	var velocity = get_host().moving_vector(get_host().position - target_position, self.panic_radius / distance_squared * multiplier)
+	var distance_squared = target_position.distance_to(get_character().position) + 1
+	var velocity = get_character().moving_vector(get_character().position - target_position, self.panic_radius / distance_squared * multiplier)
 	
-	return velocity - get_host().velocity
+	return velocity - get_character().velocity

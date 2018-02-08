@@ -406,6 +406,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Shadow:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.25 ), Color( 0.476563, 0.122864, 0.122864, 1 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 
@@ -571,7 +583,7 @@ _sections_unfolded = [ "Material", "Offset", "Transform", "Visibility" ]
 
 [node name="Sword" parent="Sprite" index="0" instance=ExtResource( 6 )]
 
-position = Vector2( -20, -35 )
+position = Vector2( -15, -40 )
 monitorable = true
 collision_mask = 3072
 

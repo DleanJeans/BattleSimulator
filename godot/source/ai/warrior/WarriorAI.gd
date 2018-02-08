@@ -1,15 +1,20 @@
-extends Node
+extends Node2D
 
-export(int) var thoughts_per_second = 5
+export(NodePath) var character_path
+
+export(float) var thoughts_per_second = 1
 export(bool) var enabled = true
-export(NodePath) var host_path
-export(NodePath) var health_mechanic_path
+export(bool) var allow_free_thinking = true
+export(float) var far_distance_threshold = 100
 
-onready var _thinking_interval = 1 / thoughts_per_second
+onready var _thinking_interval = 1.0 / thoughts_per_second
+var velocity setget , get_velocity
+
+func get_velocity():
+	return get_character().get_velocity()
 
 func _ready():
-	yield(get_tree().create_timer(0.1), "timeout")
-	think()
+	start_thinking()
 
 func start_thinking():
 	while enabled:
@@ -17,15 +22,36 @@ func start_thinking():
 		think()
 
 func think():
+	if not allow_free_thinking: return
+	
 	var enemy = $Locator.find_enemy()
-	$Move.to(enemy)
+	if enemy == null:
+		$Move.stop()
+		return
+	
+	if _enemy_is_faraway(enemy):
+		$Move.to(enemy)
 	yield($Move, "point_reached")
-	$Attack.kill(enemy)
+	$Attack.start_attacking(enemy)
 
-func get_host():
-	return get_node(host_path)
+func _enemy_is_faraway(enemy):
+	var distance_to_enemy = $Locator.distance_to(enemy)
+	return distance_to_enemy > far_distance_threshold
 
-func get_health_mechanic():
-	if health_mechanic_path == null:
-		return null
-	return get_node(health_mechanic_path)
+func _move_towards(direction):
+	get_character().move.towards(direction)
+
+func _physics_process(delta):
+	_update_position()
+
+func _update_position():
+	global_position = get_character().global_position
+
+func get_character():
+	return $GetterSetter.get_character()
+
+func set_character(character):
+	$GetterSetter.set_character(character)
+
+func get_locator():
+	return $Locator

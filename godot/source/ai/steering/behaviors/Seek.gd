@@ -10,5 +10,5 @@ func seek_target():
 	return seek(target)
 
 func seek(target_position):
-	var velocity = get_host().moving_vector(target_position - get_host().position)
-	return velocity - get_host().velocity
+	var velocity = get_character().moving_vector(target_position - get_character().position)
+	return velocity - get_character().velocity

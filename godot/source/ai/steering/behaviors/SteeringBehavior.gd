@@ -18,5 +18,5 @@ func off():
 	is_on = false
 	target = null
 
-func get_host():
-	return get_parent().get_host()
+func get_character():
+	return get_parent().get_character()

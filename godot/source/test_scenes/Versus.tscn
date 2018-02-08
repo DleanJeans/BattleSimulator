@@ -7,7 +7,7 @@
 [ext_resource path="res://source/warrior/Warrior.tscn" type="PackedScene" id=5]
 [ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=6]
 
-[node name="Battlefield" type="Node" index="0"]
+[node name="Battlefield" type="Node"]
 
 [node name="Helpers" type="Node" parent="." index="0"]
 
@@ -33,8 +33,10 @@ script = ExtResource( 3 )
 
 [node name="WarriorAI" parent="AI" index="0" instance=ExtResource( 4 )]
 
-host_path = NodePath("../../World/Warrior2")
-health_mechanic_path = NodePath("../../Mechanics/Health")
+character_path = NodePath("../../World/Warrior2")
+thoughts_per_second = 1
+allow_free_thinking = true
+far_distance_threshold = 100
 
 [node name="World" type="YSort" parent="." index="3"]
 

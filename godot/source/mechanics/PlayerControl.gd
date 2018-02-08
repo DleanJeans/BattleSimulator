@@ -27,10 +27,7 @@ func _physics_process(delta):
 		player.attack()
 
 func _player_is_dead():
-	if health_mechanic_path != null and has_node(health_mechanic_path):
-		var health_mechanic = get_node(health_mechanic_path)
-		return health_mechanic.is_dead(get_player())
-	return false
+	return get_player().is_dead()
 
 func set_player(new_player):
 	player_path = new_player.get_path()

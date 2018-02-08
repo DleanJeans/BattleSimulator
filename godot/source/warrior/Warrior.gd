@@ -18,16 +18,30 @@ onready var hit_area = $HitArea
 onready var animations = $Animations
 
 var velocity setget , get_velocity
+var _dead = false
+
+func is_dead():
+	return _dead
 
 func get_velocity():
-	return move.velocity if move != null else Vector2()
+	return Vector2() if move == null else move.velocity
 
 func attack():
 	$Animations/Attack.play_attack()
 
 func die():
 	print("%s just died!" % name)
+	_dead = true
 	emit_signal("died")
+	self_destroy()
+
+func self_destroy():
+	yield($Animations/Die, "animation_finished")
+	$Feet.queue_free()
+	$HitArea.queue_free()
+	$Code.queue_free()
+	$Animations.queue_free()
+	$Sprite/Sword.shape_enabled = false
 
 func set_team(team_name):
 	team = team_name

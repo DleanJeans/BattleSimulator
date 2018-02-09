@@ -17,7 +17,7 @@ func set_character(character):
 	var parent = get_parent()
 	
 	if character.is_inside_tree():
-		character.connect("died", parent, "queue_free")
+		character.connect("died", parent, "free")
 		parent.character_path = character.get_path()
 		parent.add_to_group(character.team + "WarriorAI")
 	else:

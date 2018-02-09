@@ -3,7 +3,7 @@ extends Node
 export(int) var total_force = 250
 export(NodePath) var character_path = ".."
 
-var priorities = ["Arrive", "Flee", "Seek"]
+var priorities = ["Separation", "Arrive", "Flee", "Seek"]
 
 var _steering_velocity
 var _force_left

@@ -11,15 +11,9 @@ var _team
 var _troop_ai
 
 func _ready():
-	create_troops(Const.TEAM_RED, 10, 10)
-	position.x += 1250
-	create_troops(Const.TEAM_PURPLE, 10, 10)
-
-func _setup_ai_if_path_provided():
-	if ai_core_path != null:
-		ai_core = get_node(ai_core_path)
-		_troop_ai = Scene.TroopAI.instance()
-		ai_core.add_child(_troop_ai)
+	create_troops(Const.TEAM_RED)
+	position.x += 750
+	create_troops(Const.TEAM_PURPLE)
 
 func create_troops(team, rows = 2, columns = 5):
 	_team = team
@@ -29,6 +23,12 @@ func create_troops(team, rows = 2, columns = 5):
 	for x in range(0, rows):
 		for y in range(0, columns):
 			create_warrior( x, y)
+
+func _setup_ai_if_path_provided():
+	if ai_core_path != null:
+		ai_core = get_node(ai_core_path)
+		_troop_ai = Scene.TroopAI.instance()
+		ai_core.add_child(_troop_ai)
 
 func create_warrior(row, column):
 	var warrior_position = Vector2(row, column) * spacing

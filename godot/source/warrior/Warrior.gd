@@ -16,6 +16,7 @@ onready var sword = $Sprite/Sword
 onready var move = $Code/Movement
 onready var hit_area = $HitArea
 onready var animations = $Animations
+onready var attack_animation = $Animations/Attack
 
 var velocity setget , get_velocity
 var _dead = false

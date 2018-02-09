@@ -34,9 +34,6 @@ script = ExtResource( 3 )
 [node name="WarriorAI" parent="AI" index="0" instance=ExtResource( 4 )]
 
 character_path = NodePath("../../World/Warrior2")
-thoughts_per_second = 1
-allow_free_thinking = true
-far_distance_threshold = 100
 
 [node name="World" type="YSort" parent="." index="3"]
 
@@ -50,7 +47,7 @@ team = "TeamRed"
 
 [node name="Warrior2" parent="World" index="1" instance=ExtResource( 5 )]
 
-position = Vector2( 210, 10 )
+position = Vector2( 390, 10 )
 team = "TeamPurple"
 
 [node name="GUI" type="Node" parent="." index="4"]

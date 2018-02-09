@@ -19,6 +19,6 @@ func arrive():
 		
 		var velocity = direction * speed / distance
 		
-		return velocity - get_character().velocity
+		return velocity #- get_character().velocity
 	
 	return Vector2()

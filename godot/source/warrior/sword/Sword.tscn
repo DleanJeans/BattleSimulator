@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 12, 32 )
+extents = Vector2( 12, 45 )
 
-[node name="Sword" type="Area2D" index="0"]
+[node name="Sword" type="Area2D"]
 
 show_behind_parent = true
 input_pickable = false
@@ -40,7 +40,7 @@ _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="Shape" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( -5, -45 )
+position = Vector2( -5, -35 )
 shape = SubResource( 1 )
 disabled = true
 

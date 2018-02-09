@@ -10,3 +10,10 @@ func get_facing_left():
 
 func is_attacking():
 	return $Attack.is_playing()
+
+func get_current_facing():
+	return $Face.get_current_facing()
+
+func stop_attacking():
+	$Attack.seek($Attack.current_animation_length, true)
+#	$Attack.stop()

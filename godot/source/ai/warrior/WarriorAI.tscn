@@ -10,15 +10,13 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 100.0
+radius = 200.0
 
-[node name="WarriorAI" type="Node2D"]
+[node name="WarriorAI" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 character_path = null
-thoughts_per_second = 1
-enabled = true
-allow_free_thinking = true
+thoughts_per_second = 2
 far_distance_threshold = 100
 
 [node name="GetterSetter" type="Node" parent="." index="0"]
@@ -29,10 +27,9 @@ script = ExtResource( 2 )
 
 script = ExtResource( 3 )
 near_distance_threshold = 50
+enabled = true
 
 [node name="Steering" parent="Move" index="0" instance=ExtResource( 4 )]
-
-character_path = ".."
 
 [node name="Attack" type="Node" parent="." index="2"]
 
@@ -41,6 +38,8 @@ script = ExtResource( 5 )
 [node name="Locator" type="Node2D" parent="." index="3"]
 
 script = ExtResource( 6 )
+too_close_threshold = 125.0
+close_threshold = 175.0
 
 [node name="NearbyArea" type="Area2D" parent="Locator" index="0"]
 
@@ -52,10 +51,13 @@ angular_damp = 1.0
 collision_layer = 0
 audio_bus_override = false
 audio_bus_name = "Master"
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Shape" type="CollisionShape2D" parent="Locator/NearbyArea" index="0"]
 
 shape = SubResource( 1 )
+_sections_unfolded = [ "Z Index" ]
+
+[connection signal="body_entered" from="Locator/NearbyArea" to="Locator" method="_on_NearbyArea_body_entered"]
 
 

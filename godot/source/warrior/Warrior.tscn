@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://source/warrior/Purplizer.shader" type="Shader" id=1]
 [ext_resource path="res://source/warrior/Warrior.gd" type="Script" id=2]
@@ -7,14 +7,13 @@
 [ext_resource path="res://assets/png/Warrior.png" type="Texture" id=5]
 [ext_resource path="res://source/warrior/sword/Sword.tscn" type="PackedScene" id=6]
 [ext_resource path="res://source/warrior/Movement.gd" type="Script" id=7]
-[ext_resource path="res://source/warrior/PhysicsProcess.gdns" type="Script" id=8]
-[ext_resource path="res://source/warrior/Team.gd" type="Script" id=9]
-[ext_resource path="res://source/warrior/animations/Animations.gd" type="Script" id=10]
-[ext_resource path="res://source/warrior/animations/Face.gd" type="Script" id=11]
-[ext_resource path="res://source/warrior/animations/Bob.gd" type="Script" id=12]
-[ext_resource path="res://source/warrior/animations/Attack.gd" type="Script" id=13]
-[ext_resource path="res://source/warrior/animations/Hit.gd" type="Script" id=14]
-[ext_resource path="res://source/warrior/animations/Die.gd" type="Script" id=15]
+[ext_resource path="res://source/warrior/Team.gd" type="Script" id=8]
+[ext_resource path="res://source/warrior/animations/Animations.gd" type="Script" id=9]
+[ext_resource path="res://source/warrior/animations/Face.gd" type="Script" id=10]
+[ext_resource path="res://source/warrior/animations/Bob.gd" type="Script" id=11]
+[ext_resource path="res://source/warrior/animations/Attack.gd" type="Script" id=12]
+[ext_resource path="res://source/warrior/animations/Hit.gd" type="Script" id=13]
+[ext_resource path="res://source/warrior/animations/Die.gd" type="Script" id=14]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -828,7 +827,7 @@ tracks/8/keys = {
 "values": [ Color( 0, 0, 0, 0.25 ), Color( 0.498039, 0.0980392, 0.0980392, 1 ) ]
 }
 
-[node name="Warrior" type="KinematicBody2D" groups=[
+[node name="Warrior" type="KinematicBody2D" index="0" groups=[
 "Warriors",
 ]]
 
@@ -904,15 +903,13 @@ script = ExtResource( 7 )
 
 [node name="PhysicsProcess" type="Node" parent="Code/Movement" index="0"]
 
-script = ExtResource( 8 )
-
 [node name="Team" type="Node" parent="Code" index="1"]
 
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="Animations" type="Node" parent="." index="5"]
 
-script = ExtResource( 10 )
+script = ExtResource( 9 )
 
 [node name="Face" type="AnimationPlayer" parent="Animations" index="0"]
 
@@ -926,7 +923,7 @@ anims/Left = SubResource( 5 )
 anims/Right = SubResource( 6 )
 anims/Up = SubResource( 7 )
 blend_times = [  ]
-script = ExtResource( 11 )
+script = ExtResource( 10 )
 
 [node name="Bob" type="AnimationPlayer" parent="Animations" index="1"]
 
@@ -938,7 +935,7 @@ playback_speed = 1.0
 anims/Bobbing = SubResource( 8 )
 anims/Stop = SubResource( 9 )
 blend_times = [ "Bobbing", "Stop", 0.5 ]
-script = ExtResource( 12 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="Attack" type="AnimationPlayer" parent="Animations" index="2"]
@@ -953,7 +950,7 @@ anims/Left = SubResource( 11 )
 anims/Right = SubResource( 12 )
 anims/Up = SubResource( 13 )
 blend_times = [ "Bobbing", "Stop", 0.5 ]
-script = ExtResource( 13 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="Hit" type="AnimationPlayer" parent="Animations" index="3"]
@@ -965,7 +962,7 @@ playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/Hit = SubResource( 14 )
 blend_times = [  ]
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 
 [node name="Die" type="AnimationPlayer" parent="Animations" index="4"]
 
@@ -977,7 +974,7 @@ playback_speed = 1.0
 anims/DeathFromLeft = SubResource( 15 )
 anims/DeathFromRight = SubResource( 16 )
 blend_times = [  ]
-script = ExtResource( 15 )
+script = ExtResource( 14 )
 
 [connection signal="died" from="." to="Animations/Die" method="play_dead"]
 

@@ -31,6 +31,10 @@ func attack():
 	$AnimationCenter/Attack.play_attack()
 
 func die():
+	# delegate to an idle frame
+	# so the game won't crash
+	yield(get_tree(), "idle_frame")
+	
 	print("%s just died!" % name)
 	_dead = true
 	emit_signal("died")

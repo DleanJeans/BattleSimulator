@@ -15,19 +15,19 @@
 [ext_resource path="res://source/warrior/animations/Hit.gd" type="Script" id=13]
 [ext_resource path="res://source/warrior/animations/Die.gd" type="Script" id=14]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 10.0
 height = 20.0
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 22.0
 height = 56.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 resource_name = "Down"
 length = 0.01
@@ -82,7 +82,7 @@ tracks/3/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 length = 0.01
 loop = false
@@ -136,7 +136,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 
 length = 0.01
 loop = false
@@ -190,7 +190,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 
 resource_name = "Up"
 length = 0.01
@@ -257,7 +257,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 
 length = 0.3
 loop = true
@@ -287,7 +287,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -5 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 
 length = 0.01
 loop = false
@@ -317,7 +317,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 
 resource_name = "Down"
 length = 0.5
@@ -396,7 +396,7 @@ tracks/5/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 
 resource_name = "Left"
 length = 0.5
@@ -451,7 +451,7 @@ tracks/3/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 
 resource_name = "Right"
 length = 0.5
@@ -506,7 +506,7 @@ tracks/3/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 
 resource_name = "Up"
 length = 0.5
@@ -573,7 +573,7 @@ tracks/4/keys = {
 "values": [ Vector2( 30, -35 ), Vector2( -20, -35 ), Vector2( 25, -35 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 
 length = 0.2
 loop = false
@@ -591,7 +591,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=14]
 
 length = 0.2
 loop = false
@@ -717,7 +717,7 @@ tracks/9/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.5 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 
 length = 0.2
 loop = false
@@ -843,7 +843,7 @@ tracks/9/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.5 ) ]
 }
 
-[node name="Warrior" type="KinematicBody2D" groups=[
+[node name="Warrior" type="KinematicBody2D" index="0" groups=[
 "Warriors",
 ]]
 
@@ -863,7 +863,7 @@ attack_duration = 0.5
 
 position = Vector2( 0, -5 )
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="HitArea" type="Area2D" parent="." index="1"]
@@ -886,7 +886,7 @@ __meta__ = {
 
 [node name="Shape" type="CollisionShape2D" parent="HitArea" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Shadow" type="Sprite" parent="." index="2"]
 
@@ -932,10 +932,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Down = SubResource( 4 )
-anims/Left = SubResource( 5 )
-anims/Right = SubResource( 6 )
-anims/Up = SubResource( 7 )
+anims/Down = SubResource( 3 )
+anims/Left = SubResource( 4 )
+anims/Right = SubResource( 5 )
+anims/Up = SubResource( 6 )
 blend_times = [  ]
 script = ExtResource( 10 )
 
@@ -946,8 +946,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Bobbing = SubResource( 8 )
-anims/Stop = SubResource( 9 )
+anims/Bobbing = SubResource( 7 )
+anims/Stop = SubResource( 8 )
 blend_times = [ "Bobbing", "Stop", 0.5 ]
 script = ExtResource( 11 )
 _sections_unfolded = [ "Playback Options" ]
@@ -959,10 +959,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.1
 playback_speed = 0.75
-anims/Down = SubResource( 10 )
-anims/Left = SubResource( 11 )
-anims/Right = SubResource( 12 )
-anims/Up = SubResource( 13 )
+anims/Down = SubResource( 9 )
+anims/Left = SubResource( 10 )
+anims/Right = SubResource( 11 )
+anims/Up = SubResource( 12 )
 blend_times = [ "Bobbing", "Stop", 0.5 ]
 script = ExtResource( 12 )
 _sections_unfolded = [ "Playback Options" ]
@@ -974,7 +974,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Hit = SubResource( 14 )
+anims/Hit = SubResource( 13 )
 blend_times = [  ]
 script = ExtResource( 13 )
 
@@ -985,8 +985,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/DeathFromLeft = SubResource( 15 )
-anims/DeathFromRight = SubResource( 16 )
+anims/DeathFromLeft = SubResource( 14 )
+anims/DeathFromRight = SubResource( 15 )
 blend_times = [  ]
 script = ExtResource( 14 )
 

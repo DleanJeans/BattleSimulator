@@ -22,6 +22,7 @@ ai_core_path = NodePath("../../AICore")
 [node name="PlayerRandomizer" type="Node" parent="Helpers" index="1"]
 
 script = ExtResource( 2 )
+enabled = false
 player_tracker_path = NodePath("../../Mechanics/PlayerTracker")
 
 [node name="Mechanics" type="Node" parent="." index="1"]
@@ -53,15 +54,15 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="PlayerCamera" parent="GUI" index="0" instance=ExtResource( 6 )]
 
-zoom = 1.5
+zoom = 2.0
 
 [node name="PlayerIndicator" parent="GUI" index="1" instance=ExtResource( 7 )]
 
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerCamera" method="set_player"]
-
 [connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerIndicator" method="set_player"]
+
+[connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerCamera" method="set_player"]
 
 [connection signal="player_changed" from="Mechanics/PlayerTracker" to="Mechanics/PlayerControl" method="set_player"]
 

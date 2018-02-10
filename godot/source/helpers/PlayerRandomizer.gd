@@ -1,5 +1,6 @@
 extends Node
 
+export(bool) var enabled = true
 export(NodePath) var player_tracker_path
 onready var PlayerTracker = get_node(player_tracker_path)
 
@@ -50,4 +51,5 @@ func _disable_warrior_ai(player):
 
 func _ready():
 	randomize()
-	choose_randomly()
+	if enabled:
+		choose_randomly()

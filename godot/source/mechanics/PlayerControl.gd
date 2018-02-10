@@ -12,7 +12,7 @@ const ATTACK = "attack"
 func _physics_process(delta):
 	var player = get_player()
 	
-	if _player_is_dead(): return
+	if player == null or _player_is_dead(): return
 	
 	if Input.is_action_pressed(UP):
 		player.move.up()
@@ -33,4 +33,6 @@ func set_player(new_player):
 	player_path = new_player.get_path()
 
 func get_player():
+	if player_path == null:
+		return null
 	return get_node(player_path)

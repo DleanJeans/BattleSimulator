@@ -23,6 +23,9 @@ func find_enemy():
 		enemy = find_nearest_global_enemy()
 	return enemy
 
+func _filter_enemy(enemy):
+	return enemy.is_dead()
+
 func find_nearest_enemy_nearby():
 	var nearby_enemies = _get_nearby_enemies()
 	return find_nearest_enemy_in(nearby_enemies)

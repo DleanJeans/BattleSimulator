@@ -11,7 +11,7 @@ func find_nearest_enemy_in(enemies):
 	var nearest_distance = INF
 	
 	for enemy in enemies:
-		if enemy.is_dead(): continue
+		if _filter_enemy(enemy): continue
 		
 		var distance_to_enemy = distance_to(enemy)
 		if distance_to_enemy < nearest_distance:
@@ -19,6 +19,9 @@ func find_nearest_enemy_in(enemies):
 			nearest_distance = distance_to_enemy
 	
 	return nearest_enemy
+
+func _filter_enemy(enemy):
+	return false # override this
 
 func distance_to(node):
 	return get_parent().global_position.distance_to(node.global_position)

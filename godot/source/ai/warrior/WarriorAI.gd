@@ -20,7 +20,15 @@ func _ready():
 	$Locator.connect("enemy_detected_nearby", self, "_set_enemy")
 
 func _set_enemy(enemy):
+	if _enemy != null: return
+	
 	_enemy = enemy
+	if enemy is Class.WarriorAI:
+		enemy = enemy.get_character()
+	enemy.connect("died", self, "_on_enemy_died")
+
+func _on_enemy_died():
+	_enemy = null
 
 func _move_towards(direction):
 	if _enemy == null:

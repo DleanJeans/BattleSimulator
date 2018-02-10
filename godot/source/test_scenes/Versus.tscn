@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://source/mechanics/PlayerControl.gd" type="Script" id=1]
 [ext_resource path="res://source/mechanics/health/Health.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://source/ai/warrior/WarriorAI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://source/warrior/Warrior.tscn" type="PackedScene" id=5]
 [ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://source/gui/player_indicator/PlayerIndicator.tscn" type="PackedScene" id=7]
 
 [node name="Battlefield" type="Node"]
 
@@ -54,8 +55,12 @@ team = "TeamPurple"
 
 [node name="PlayerCamera" parent="GUI" index="0" instance=ExtResource( 6 )]
 
-[connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerCamera" method="set_player"]
+[node name="PlayerIndicator" parent="GUI" index="1" instance=ExtResource( 7 )]
 
 [connection signal="player_changed" from="Mechanics/PlayerTracker" to="Mechanics/PlayerControl" method="set_player"]
+
+[connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerIndicator" method="set_player"]
+
+[connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerCamera" method="set_player"]
 
 

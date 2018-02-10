@@ -32,7 +32,6 @@ func _flip_right():
 func play(name):
 	if name == _current_facing:
 		return
-	animation_center.stop_attacking()
 	_current_facing = name
 	.play(name)
 

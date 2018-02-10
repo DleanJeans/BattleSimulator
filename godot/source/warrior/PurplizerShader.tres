@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://source/warrior/Purplizer.shader" type="Shader" id=1]
+
+[resource]
+
+render_priority = 0
+shader = ExtResource( 1 )
+shader_param/default_hue = 15.0
+shader_param/replace_color = Color( 0.607843, 0.141176, 0.941176, 1 )
+_sections_unfolded = [ "shader_param" ]
+

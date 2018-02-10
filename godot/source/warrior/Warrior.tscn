@@ -1,6 +1,6 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://source/warrior/Purplizer.shader" type="Shader" id=1]
+[ext_resource path="res://source/warrior/PurplizerShader.tres" type="Material" id=1]
 [ext_resource path="res://source/warrior/Warrior.gd" type="Script" id=2]
 [ext_resource path="res://source/warrior/HitArea.gd" type="Script" id=3]
 [ext_resource path="res://assets/png/Circle.png" type="Texture" id=4]
@@ -14,14 +14,6 @@
 [ext_resource path="res://source/warrior/animations/Attack.gd" type="Script" id=12]
 [ext_resource path="res://source/warrior/animations/Hit.gd" type="Script" id=13]
 [ext_resource path="res://source/warrior/animations/Die.gd" type="Script" id=14]
-
-[sub_resource type="ShaderMaterial" id=1]
-
-render_priority = 0
-shader = ExtResource( 1 )
-shader_param/default_hue = 15.0
-shader_param/replace_color = Color( 0.607843, 0.141176, 0.941176, 1 )
-_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 
@@ -330,7 +322,7 @@ tracks/1/keys = {
 resource_name = "Down"
 length = 0.5
 loop = false
-step = 0.01
+step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Sprite:rotation_degrees")
 tracks/0/interp = 1
@@ -374,7 +366,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.25, 0.3 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -453,7 +445,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.25, 0.3 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -464,7 +456,7 @@ tracks/3/keys = {
 resource_name = "Right"
 length = 0.5
 loop = false
-step = 0.05
+step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Sprite/Sword:rotation_degrees")
 tracks/0/interp = 2
@@ -508,7 +500,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.25, 0.3 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -519,7 +511,7 @@ tracks/3/keys = {
 resource_name = "Up"
 length = 0.5
 loop = false
-step = 0.01
+step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Sprite:rotation_degrees")
 tracks/0/interp = 1
@@ -563,7 +555,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.23, 0.3 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -712,6 +704,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 0.25 ), Color( 0.476563, 0.122864, 0.122864, 1 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("..:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.5 ) ]
+}
 
 [sub_resource type="Animation" id=16]
 
@@ -826,12 +830,24 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 0.25 ), Color( 0.498039, 0.0980392, 0.0980392, 1 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("..:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.5 ) ]
+}
 
-[node name="Warrior" type="KinematicBody2D" index="0" groups=[
+[node name="Warrior" type="KinematicBody2D" groups=[
 "Warriors",
 ]]
 
-material = SubResource( 1 )
+material = ExtResource( 1 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -885,13 +901,13 @@ _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 texture = ExtResource( 5 )
 offset = Vector2( 0, -50 )
 hframes = 3
+frame = 1
 region_rect = Rect2( 15, 24, 6, 20 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Transform", "Visibility" ]
 
 [node name="Sword" parent="Sprite" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -20, -35 )
-rotation = 6.28319
 monitorable = true
 collision_mask = 3072
 
@@ -901,17 +917,15 @@ collision_mask = 3072
 
 script = ExtResource( 7 )
 
-[node name="PhysicsProcess" type="Node" parent="Code/Movement" index="0"]
-
 [node name="Team" type="Node" parent="Code" index="1"]
 
 script = ExtResource( 8 )
 
-[node name="Animations" type="Node" parent="." index="5"]
+[node name="AnimationCenter" type="Node" parent="." index="5"]
 
 script = ExtResource( 9 )
 
-[node name="Face" type="AnimationPlayer" parent="Animations" index="0"]
+[node name="Face" type="AnimationPlayer" parent="AnimationCenter" index="0"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -925,7 +939,7 @@ anims/Up = SubResource( 7 )
 blend_times = [  ]
 script = ExtResource( 10 )
 
-[node name="Bob" type="AnimationPlayer" parent="Animations" index="1"]
+[node name="Bob" type="AnimationPlayer" parent="AnimationCenter" index="1"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -938,7 +952,7 @@ blend_times = [ "Bobbing", "Stop", 0.5 ]
 script = ExtResource( 11 )
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="Attack" type="AnimationPlayer" parent="Animations" index="2"]
+[node name="Attack" type="AnimationPlayer" parent="AnimationCenter" index="2"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -953,7 +967,7 @@ blend_times = [ "Bobbing", "Stop", 0.5 ]
 script = ExtResource( 12 )
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="Hit" type="AnimationPlayer" parent="Animations" index="3"]
+[node name="Hit" type="AnimationPlayer" parent="AnimationCenter" index="3"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -964,7 +978,7 @@ anims/Hit = SubResource( 14 )
 blend_times = [  ]
 script = ExtResource( 13 )
 
-[node name="Die" type="AnimationPlayer" parent="Animations" index="4"]
+[node name="Die" type="AnimationPlayer" parent="AnimationCenter" index="4"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -976,11 +990,11 @@ anims/DeathFromRight = SubResource( 16 )
 blend_times = [  ]
 script = ExtResource( 14 )
 
-[connection signal="died" from="." to="Animations/Die" method="play_dead"]
+[connection signal="died" from="." to="AnimationCenter/Die" method="play_dead"]
 
-[connection signal="hit" from="." to="Animations/Hit" method="_on_Warrior_got_hit"]
+[connection signal="hit" from="." to="AnimationCenter/Hit" method="_on_Warrior_got_hit"]
 
-[connection signal="hit_by_weapon" from="." to="Animations/Die" method="track_weapon"]
+[connection signal="hit_by_weapon" from="." to="AnimationCenter/Die" method="track_weapon"]
 
 [connection signal="area_entered" from="HitArea" to="HitArea" method="_on_area_entered"]
 

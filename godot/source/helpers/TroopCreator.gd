@@ -22,7 +22,7 @@ func create_troops(team, rows = 2, columns = 5):
 	
 	for x in range(0, rows):
 		for y in range(0, columns):
-			create_warrior( x, y)
+			create_warrior(x, y)
 
 func _setup_ai_if_path_provided():
 	if ai_core_path != null:

@@ -15,6 +15,8 @@ func right():
 	towards(Const.RIGHT)
 
 func towards(direction):
+	if warrior.animation_center.is_attacking(): return
+	
 	if direction.length_squared() > 1:
 		direction = direction.normalized()
 	var added_velocity = direction * warrior.speed

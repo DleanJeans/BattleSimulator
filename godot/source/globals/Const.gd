@@ -11,8 +11,7 @@ const TROOP_AI = "TroopAI"
 const TEAM_RED = "TeamRed"
 const TEAM_PURPLE = "TeamPurple"
 
-#const TEAM_RED_WARRIOR_AI = "TeamRedWarriorAI"
-#const TEAM_PURPLE_WARRIOR_AI = "TeamPurpleWarriorAI"
-#
-#const TEAM_RED_TROOP_AI = "TeamRedTroopAI"
-#const TEAM_PURPLE_TROOP_AI = "TeamPurpleTroopAI"
+func get_enemy_team(friendly_team):
+	match friendly_team:
+		TEAM_RED: return TEAM_PURPLE
+		TEAM_PURPLE: return TEAM_RED

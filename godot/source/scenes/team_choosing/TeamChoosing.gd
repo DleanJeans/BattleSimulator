@@ -4,8 +4,8 @@ onready var team_red = $World/TeamRed
 onready var team_purple = $World/TeamPurple
 
 func _ready():
-	team_red.face.left()
-	team_purple.face.right()
+	team_red.face.right()
+	team_purple.face.left()
 	
 	team_red.connect("died", self, "start_game", [team_purple.name])
 	team_purple.connect("died", self, "start_game", [team_red.name])

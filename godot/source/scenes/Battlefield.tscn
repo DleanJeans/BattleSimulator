@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://source/helpers/troop_creator/TroopCreator.gd" type="Script" id=1]
-[ext_resource path="res://source/helpers/player_randomizer/PlayerRandomizer.gd" type="Script" id=2]
-[ext_resource path="res://source/mechanics/health/Health.gd" type="Script" id=3]
-[ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=4]
-[ext_resource path="res://source/gui/player_indicator/PlayerIndicator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://source/scenes/Battlefield.gd" type="Script" id=1]
+[ext_resource path="res://source/helpers/troop_creator/TroopCreator.gd" type="Script" id=2]
+[ext_resource path="res://source/helpers/player_randomizer/PlayerRandomizer.gd" type="Script" id=3]
+[ext_resource path="res://source/mechanics/health/Health.gd" type="Script" id=4]
+[ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://source/gui/player_indicator/PlayerIndicator.tscn" type="PackedScene" id=6]
+[ext_resource path="res://source/gui/health_bars/HealthBarSystem.tscn" type="PackedScene" id=7]
 
 [sub_resource type="GDScript" id=1]
 
@@ -59,20 +61,22 @@ func set_player(warrior):
 	player = warrior
 	emit_signal(\"player_changed\", warrior)"
 
-[node name="Battlefield" type="Node" index="0"]
+[node name="Battlefield" type="Node"]
+
+script = ExtResource( 1 )
 
 [node name="Helpers" type="Node" parent="." index="0"]
 
 [node name="TroopCreator" type="Node2D" parent="Helpers" index="0"]
 
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 spacing = Vector2( 100, 100 )
 world_path = NodePath("../../World")
 ai_core_path = NodePath("../../AICore")
 
 [node name="PlayerRandomizer" type="Node" parent="Helpers" index="1"]
 
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 enabled = true
 player_tracker_path = NodePath("../../Mechanics/PlayerTracker")
 
@@ -90,8 +94,8 @@ script = SubResource( 2 )
 
 [node name="Health" type="Node" parent="Mechanics" index="2"]
 
-script = ExtResource( 3 )
-WARRIOR_HEALTH = 5
+script = ExtResource( 4 )
+warrior_health = 5
 scan_node_childen = NodePath("../../World")
 
 [node name="AICore" type="Node" parent="." index="2"]
@@ -101,19 +105,25 @@ scan_node_childen = NodePath("../../World")
 sort_enabled = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="GUI" type="Node" parent="." index="4"]
+[node name="GUI" type="Node2D" parent="." index="4"]
 
-[node name="PlayerCamera" parent="GUI" index="0" instance=ExtResource( 4 )]
+[node name="PlayerCamera" parent="GUI" index="0" instance=ExtResource( 5 )]
 
+position = Vector2( 480, 270 )
 zoom = 1.5
 
-[node name="PlayerIndicator" parent="GUI" index="1" instance=ExtResource( 5 )]
+[node name="PlayerIndicator" parent="GUI" index="1" instance=ExtResource( 6 )]
 
+offset = Vector2( 0, -170 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerCamera" method="set_player"]
+[node name="HealthBars" parent="GUI" index="2" instance=ExtResource( 7 )]
+
+health_mechanic_path = NodePath("../../Mechanics/Health")
 
 [connection signal="player_changed" from="Mechanics/PlayerTracker" to="Mechanics/PlayerControl" method="set_player"]
+
+[connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerCamera" method="set_player"]
 
 [connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerIndicator" method="set_player"]
 

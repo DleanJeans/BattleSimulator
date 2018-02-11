@@ -3,6 +3,7 @@ extends KinematicBody2D
 signal hit(me, damage)
 signal hit_by_weapon(weapon)
 signal died
+signal health_changed(health)
 
 export(String, "Null", "TeamRed", "TeamPurple") var team = "Null" setget set_team
 
@@ -47,6 +48,9 @@ func self_destroy():
 	$Code.queue_free()
 	$AnimationCenter.queue_free()
 	$Sprite/Sword.shape_enabled = false
+
+func emit_health_changed(health):
+	emit_signal("health_changed", health)
 
 func set_team(team_name):
 	if team_name == "Null":

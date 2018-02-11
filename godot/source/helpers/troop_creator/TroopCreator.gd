@@ -11,16 +11,16 @@ var _team
 var _troop_ai
 
 func _ready():
-	create_troops(Const.TEAM_RED)
-	position.x += 750
-	create_troops(Const.TEAM_PURPLE)
+	create_troops(Const.TEAM_RED, 2, 2)
+	position.x += 1000
+	create_troops(Const.TEAM_PURPLE, 2, 2)
 	
-	position.x = 0
-	position.y += 750
-	
-	create_troops(Const.TEAM_RED)
-	position.x += 750
-	create_troops(Const.TEAM_PURPLE)
+#	position.x = 0
+#	position.y += 750
+#
+#	create_troops(Const.TEAM_RED)
+#	position.x += 750
+#	create_troops(Const.TEAM_PURPLE)
 
 func create_troops(team, rows = 2, columns = 5):
 	_team = team

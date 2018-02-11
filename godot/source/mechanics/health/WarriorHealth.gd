@@ -3,20 +3,20 @@ extends Node
 signal hit_zero(warrior)
 
 var warrior
-var health
+var value
 
-func _init(warrior, health):
+func _init(warrior, value):
 	self.warrior = warrior
-	self.health = health
+	self.value = value
 
 func lose(damage):
-	self.health -= damage
+	self.value -= damage
 	
-	if is_health_zero():
+	if is_value_zero():
 		die()
 
-func is_health_zero():
-	return health <= 0
+func is_value_zero():
+	return value <= 0
 
 func die():
 	emit_signal("hit_zero", warrior)

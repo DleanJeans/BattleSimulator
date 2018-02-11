@@ -1,6 +1,8 @@
 extends Node
 
-export(int) var WARRIOR_HEALTH = 5
+signal warrior_health_changed(warrior, health)
+
+export(int) var warrior_health = 5
 export(NodePath) var scan_node_childen
 
 var health_dictionary = {}
@@ -12,7 +14,7 @@ var _processed_health
 
 func get_health(warrior):
 	_set_processed_warrior(warrior)
-	return _processed_health.health
+	return _processed_health.value
 
 func is_dead(warrior):
 	_set_processed_warrior(warrior)
@@ -26,7 +28,7 @@ func scan_warriors():
 		if node is Class.Warrior:
 			add_warrior(node)
 
-func add_warrior(warrior, health = WARRIOR_HEALTH):
+func add_warrior(warrior, health = warrior_health):
 	_create_health_data(warrior, health)
 	_set_processed_warrior(warrior)
 	_connect_signals()
@@ -47,9 +49,10 @@ func _on_warrior_hit(warrior, damage):
 	_set_processed_warrior(warrior)
 	_print_debug(warrior, damage)
 	_processed_health.lose(damage)
+	warrior.emit_health_changed(_processed_health.value)
 
 func _print_debug(warrior, damage):
-	var hp_left = _processed_health.health - damage
+	var hp_left = _processed_health.value - damage
 	
 func _on_health_hit_zero(warrior):
 	warrior.die()

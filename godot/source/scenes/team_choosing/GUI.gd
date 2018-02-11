@@ -16,6 +16,7 @@ func _on_ButtonRed_pressed():
 	player_control.set_player(team_red)
 	team_red.attack()
 	_start_instructions_flickering()
+	$HealthBars.show()
 
 func _on_ButtonPurple_pressed():
 	$ButtonPurple.hide()
@@ -25,6 +26,7 @@ func _on_ButtonPurple_pressed():
 	player_control.set_player(team_purple)
 	team_purple.attack()
 	_start_instructions_flickering()
+	$HealthBars.show()
 
 func _start_instructions_flickering():
 	if not $AnimationPlayer.is_playing():

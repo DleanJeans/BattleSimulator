@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends Node
 
@@ -12,8 +12,10 @@ func set_player(warrior):
 	player = warrior
 	emit_signal(\"player_changed\", warrior)"
 
-[node name="PlayerTracker" type="Node" index="0"]
+[node name="PlayerTracker" type="Node"]
 
-script = SubResource( 1 )
+script = SubResource( 2 )
+
+[connection signal="player_changed" from="." to="." method="set_player"]
 
 

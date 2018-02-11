@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://source/mechanics/health/Health.gd" type="Script" id=1]
+
+[node name="Health" type="Node"]
+
+script = ExtResource( 1 )
+WARRIOR_HEALTH = 5
+scan_node_childen = NodePath("../../World")
+
+

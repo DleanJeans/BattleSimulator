@@ -42,8 +42,8 @@ func create_warrior(row, column):
 	var warrior = Scene.Warrior.instance()
 	
 	warrior.position = self.position + warrior_position
-	world.add_child(warrior)
 	warrior.team = _team
+	world.add_child(warrior)
 	
 	if ai_core_path != null:
 		var ai = Scene.WarriorAI.instance()

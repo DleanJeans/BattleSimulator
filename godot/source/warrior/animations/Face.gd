@@ -1,32 +1,35 @@
 extends "res://source/warrior/animations/AnimationPlayer.gd"
 
-var _current_facing
+var _current_facing = "Down"
 
 func _process(delta):
 	var velocity = warrior.velocity
+	if velocity == Vector2():
+		return
+	
 	var direction_angle = velocity.angle_to_point(Vector2())
 	direction_angle = rad2deg(direction_angle)
 	direction_angle = _round_to_nearest(90, direction_angle)
 	
 	match int(direction_angle):
-		-180, 180: _flip_left()
-		-90: _flip_up()
-		0: _flip_right()
-		90: _flip_down()
+		-180, 180: left()
+		-90: up()
+		0: right()
+		90: down()
 
 func _round_to_nearest(nearest, value):
 	return round(value / nearest) * nearest
 
-func _flip_up():
+func up():
 	play("Up")
 
-func _flip_down():
+func down():
 	play("Down")
 
-func _flip_left():
+func left():
 	play("Left")
 
-func _flip_right():
+func right():
 	play("Right")
 
 func play(name):

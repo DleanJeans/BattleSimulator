@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://source/helpers/troop_creator/TroopCreator.gd" type="Script" id=1]
+
+
+[node name="TroopCreator" type="Node2D"]
+
+script = ExtResource( 1 )
+spacing = Vector2( 100, 100 )
+world_path = NodePath("../../World")
+ai_core_path = NodePath("../../AICore")
+
+

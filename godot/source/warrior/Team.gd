@@ -1,4 +1,3 @@
-tool
 extends "res://source/warrior/Code.gd"
 
 var TeamRed = {
@@ -12,6 +11,8 @@ var TeamPurple = {
 }
 
 func set_team(team_name):
+	print_stack()
+	print(team_name)
 	call_deferred("_set_team", team_name)
 
 func _set_team(team_name):

@@ -1,11 +1,10 @@
-tool
 extends KinematicBody2D
 
 signal hit(me, damage)
 signal hit_by_weapon(weapon)
 signal died
 
-export(String, "TeamRed", "TeamPurple") var team setget set_team
+export(String, "Null", "TeamRed", "TeamPurple") var team = "Null" setget set_team
 
 export(int) var speed = 250
 export(int) var speed_drag = 0.9
@@ -14,6 +13,7 @@ export(float) var attack_duration = 0.5
 onready var sprite = $Sprite
 onready var sword = $Sprite/Sword
 onready var move = $Code/Movement
+onready var face = $AnimationCenter/Face
 onready var hit_area = $HitArea
 onready var animation_center = $AnimationCenter
 onready var attack_animation = $AnimationCenter/Attack
@@ -49,6 +49,11 @@ func self_destroy():
 	$Sprite/Sword.shape_enabled = false
 
 func set_team(team_name):
+	if team_name == "Null":
+		return
+	
 	team = team_name
-	if has_node("Code/Team"):
-		$Code/Team.set_team(team_name)
+	yield(self, "tree_entered")
+#	if is_inside_tree() and has_node("Code/Team"):
+#	if has_node("Code/Team"):
+	$Code/Team.set_team(team_name)

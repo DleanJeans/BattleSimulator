@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="WeeklyJam30"
-run/main_scene="res://source/test_scenes/Battlefield.tscn"
+run/main_scene="res://source/scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -63,5 +63,5 @@ common/physics_fps=25
 
 [rendering]
 
-environment/default_clear_color=Color( 0.46875, 0.375066, 0.265503, 1 )
+environment/default_clear_color=Color( 0.227451, 0.254902, 0.231373, 1 )
 environment/default_environment="res://default_env.tres"

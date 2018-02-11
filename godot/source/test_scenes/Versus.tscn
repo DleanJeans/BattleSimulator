@@ -1,12 +1,14 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://source/mechanics/PlayerControl.gd" type="Script" id=1]
+[ext_resource path="res://source/mechanics/player_control/PlayerControl.gd" type="Script" id=1]
 [ext_resource path="res://source/mechanics/health/Health.gd" type="Script" id=2]
-[ext_resource path="res://source/mechanics/PlayerTracker.gd" type="Script" id=3]
+[ext_resource path="res://source/mechanics/player_tracker/PlayerTracker.gd" type="Script" id=3]
 [ext_resource path="res://source/ai/warrior/WarriorAI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://source/warrior/Warrior.tscn" type="PackedScene" id=5]
 [ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://source/gui/player_indicator/PlayerIndicator.tscn" type="PackedScene" id=7]
+
+
 
 [node name="Battlefield" type="Node"]
 

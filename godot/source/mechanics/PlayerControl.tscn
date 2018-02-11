@@ -1,13 +1,17 @@
-extends Node
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
 
 export(NodePath) var player_path
 export(NodePath) var health_mechanic_path
 
-const UP = "up"
-const DOWN = "down"
-const LEFT = "left"
-const RIGHT = "right"
-const ATTACK = "attack"
+const UP = \"up\"
+const DOWN = \"down\"
+const LEFT = \"left\"
+const RIGHT = \"right\"
+const ATTACK = \"attack\"
 
 func _physics_process(delta):
 	var player = get_player()
@@ -35,4 +39,12 @@ func set_player(new_player):
 func get_player():
 	if player_path == null:
 		return null
-	return get_node(player_path)
+	return get_node(player_path)"
+
+[node name="PlayerControl" type="Node"]
+
+script = SubResource( 1 )
+player_path = null
+health_mechanic_path = null
+
+

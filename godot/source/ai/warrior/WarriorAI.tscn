@@ -12,7 +12,7 @@
 custom_solver_bias = 0.0
 radius = 200.0
 
-[node name="WarriorAI" type="Node2D" index="0"]
+[node name="WarriorAI" type="Node2D"]
 
 script = ExtResource( 1 )
 character_path = null

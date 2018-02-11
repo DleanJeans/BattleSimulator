@@ -1,0 +1,335 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://source/scenes/team_choosing/TeamChoosing.gd" type="Script" id=1]
+[ext_resource path="res://source/mechanics/health/Health.tscn" type="PackedScene" id=2]
+[ext_resource path="res://source/mechanics/PlayerControl.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/warrior/Warrior.tscn" type="PackedScene" id=4]
+[ext_resource path="res://source/scenes/team_choosing/GUI.gd" type="Script" id=5]
+[ext_resource path="res://assets/fonts/Anton-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://source/font_res/Anton50.tres" type="DynamicFont" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 480, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 65 )
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Animation" id=4]
+
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Instructions:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 1, 1, 1, 0.2 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 1, 1, 1, 0.1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[node name="TeamChoosing" type="Node2D"]
+
+script = ExtResource( 1 )
+
+[node name="Mechanics" type="Node" parent="." index="0"]
+
+editor/display_folded = true
+
+[node name="Health" parent="Mechanics" index="0" instance=ExtResource( 2 )]
+
+WARRIOR_HEALTH = 1
+
+[node name="PlayerControl" parent="Mechanics" index="1" instance=ExtResource( 3 )]
+
+health_mechanic_path = NodePath("../Health")
+
+[node name="World" type="YSort" parent="." index="1"]
+
+sort_enabled = true
+
+[node name="TeamRed" parent="World" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( 650, 291 )
+scale = Vector2( 1, 0.96875 )
+team = "TeamRed"
+
+[node name="TeamPurple" parent="World" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( 310, 292 )
+team = "TeamPurple"
+
+[node name="Wall" type="StaticBody2D" parent="World" index="2"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Shape" type="CollisionShape2D" parent="World/Wall" index="0"]
+
+position = Vector2( 480, 180 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shape3" type="CollisionShape2D" parent="World/Wall" index="1"]
+
+position = Vector2( 480, 330 )
+shape = SubResource( 1 )
+
+[node name="Shape2" type="CollisionShape2D" parent="World/Wall" index="2"]
+
+position = Vector2( 10, 255 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Shape4" type="CollisionShape2D" parent="World/Wall" index="3"]
+
+position = Vector2( 950, 255 )
+shape = SubResource( 2 )
+
+[node name="GUI" type="Container" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 960.0
+margin_bottom = 540.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+player_control_path = NodePath("../Mechanics/PlayerControl")
+team_red_path = NodePath("../World/TeamRed")
+team_purple_path = NodePath("../World/TeamPurple")
+
+[node name="Instructions" type="Label" parent="GUI" index="0"]
+
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -110.0
+margin_bottom = -14.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "KILL to START:
+WASD or ARROW KEYS to MOVE
+SPACE to ATTACK"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Flicker = SubResource( 4 )
+blend_times = [  ]
+
+[node name="ButtonRed" type="Button" parent="GUI" index="2"]
+
+self_modulate = Color( 0.941176, 0.341176, 0.141176, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 480.0
+margin_top = 331.0
+margin_right = 820.0
+margin_bottom = 421.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 7 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "RED"
+flat = false
+align = 1
+_sections_unfolded = [ "Visibility", "custom_fonts", "custom_styles" ]
+
+[node name="ButtonPurple" type="Button" parent="GUI" index="3"]
+
+self_modulate = Color( 0.603922, 0.137255, 0.937255, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 140.0
+margin_top = 332.0
+margin_right = 480.0
+margin_bottom = 422.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 7 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "PURPLE"
+flat = false
+align = 1
+_sections_unfolded = [ "Visibility", "custom_fonts", "custom_styles" ]
+
+[node name="Title" type="Label" parent="GUI" index="4"]
+
+self_modulate = Color( 1, 1, 1, 0.633475 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 30.0
+margin_bottom = 104.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 7 )
+text = "CHOOSE YOUR SIDE"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+[connection signal="pressed" from="GUI/ButtonRed" to="GUI" method="_on_ButtonRed_pressed"]
+
+[connection signal="pressed" from="GUI/ButtonPurple" to="GUI" method="_on_ButtonPurple_pressed"]
+
+

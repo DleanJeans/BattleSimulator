@@ -8,10 +8,13 @@ func _process(delta):
 		return
 	
 	var direction_angle = velocity.angle_to_point(Vector2())
-	direction_angle = rad2deg(direction_angle)
-	direction_angle = _round_to_nearest(90, direction_angle)
+	angle(direction_angle)
+
+func angle(radians):
+	var angle = rad2deg(radians)
+	angle = _round_to_nearest(90, angle)
 	
-	match int(direction_angle):
+	match int(angle):
 		-180, 180: left()
 		-90: up()
 		0: right()

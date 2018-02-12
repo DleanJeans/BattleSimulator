@@ -21,7 +21,10 @@ func _set_team(team_name):
 	_change_color_for_team_purple(team_name) 
 
 func _set_group(team_name):
+	if warrior.is_in_group(Const.TEAM_RED):
+		warrior.remove_from_group(Const.TEAM_RED)
 	warrior.add_to_group(team_name)
+	print(warrior.get_groups())
 
 func _set_layer(layer, team):
 	warrior.hit_area.collision_layer = layer

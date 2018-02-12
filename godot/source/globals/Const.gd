@@ -11,6 +11,9 @@ const TROOP_AI = "TroopAI"
 const TEAM_RED = "TeamRed"
 const TEAM_PURPLE = "TeamPurple"
 
+var RED = Color("#F2460D")
+var PURPLE = Color("#930DF2")
+
 func get_enemy_team(friendly_team):
 	match friendly_team:
 		TEAM_RED: return TEAM_PURPLE

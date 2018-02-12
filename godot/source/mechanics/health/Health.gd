@@ -2,7 +2,7 @@ extends Node
 
 signal warrior_health_changed(warrior, health)
 
-export(int) var warrior_health = 5
+export(int) var warrior_health = 20
 export(NodePath) var scan_node_childen
 
 var health_dictionary = {}
@@ -22,6 +22,12 @@ func is_dead(warrior):
 
 func _ready():
 	scan_warriors()
+	if not has_node("/root/Battlefield"):
+		return
+	match Scene.level:
+		1: warrior_health = 15
+		2: warrior_health = 20
+		3: warrior_health = 25
 
 func scan_warriors():
 	for node in _node_to_scan.get_children():

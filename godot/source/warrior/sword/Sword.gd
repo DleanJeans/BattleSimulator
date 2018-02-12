@@ -1,6 +1,6 @@
 extends Area2D
 
-export(int) var damage = 1
+export(int) var damage = 2
 export(bool) var shape_enabled = false setget set_shape_enabled
 
 func _on_area_entered(area):

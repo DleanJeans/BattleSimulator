@@ -10,13 +10,13 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 200.0
+radius = 100.0
 
 [node name="WarriorAI" type="Node2D"]
 
 script = ExtResource( 1 )
 character_path = null
-thoughts_per_second = 2
+thoughts_per_second = 5
 far_distance_threshold = 100
 
 [node name="GetterSetter" type="Node" parent="." index="0"]
@@ -38,8 +38,8 @@ script = ExtResource( 5 )
 [node name="Locator" type="Node2D" parent="." index="3"]
 
 script = ExtResource( 6 )
-too_close_threshold = 125.0
-close_threshold = 175.0
+too_close_threshold = 60.0
+close_threshold = 85.0
 
 [node name="NearbyArea" type="Area2D" parent="Locator" index="0"]
 

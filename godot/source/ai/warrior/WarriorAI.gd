@@ -2,7 +2,7 @@ extends Node2D
 
 export(NodePath) var character_path #setget set_character_path
 
-export(int) var thoughts_per_second = 2
+export(int) var thoughts_per_second = 5
 export(float) var far_distance_threshold = 100
 
 onready var _thinking_interval = 1.0 / thoughts_per_second

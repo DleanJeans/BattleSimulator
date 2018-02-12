@@ -11,6 +11,11 @@ func _process(delta):
 		stop()
 	else:
 		to(enemy)
+	
+	var character = get_parent().get_character()
+	var to_enemy = enemy.global_position - character.global_position
+	var angle_to_enemy = to_enemy.angle_to_point(Vector2())
+	character.face.angle(angle_to_enemy)
 
 func _ready():
 	yield(get_parent(), "tree_entered")

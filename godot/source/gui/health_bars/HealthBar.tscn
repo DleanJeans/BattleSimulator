@@ -8,7 +8,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-bg_color = Color( 0.921875, 0.0792236, 0.0792236, 1 )
+bg_color = Color( 1, 1, 1, 1 )
 draw_center = true
 border_width_left = 0
 border_width_top = 0
@@ -62,6 +62,7 @@ _sections_unfolded = [ "Corner Radius" ]
 
 [node name="HealthBar" type="ProgressBar"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

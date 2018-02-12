@@ -22,6 +22,24 @@ onready var attack_animation = $AnimationCenter/Attack
 var velocity setget , get_velocity
 var _dead = false
 
+func _ready():
+	match team:
+		Const.TEAM_RED: face.right()
+		Const.TEAM_PURPLE: face.left()
+
+func is_player():
+	return self == Scene.player
+
+func change_sword():
+	$Sprite/Sword/Sprite.texture = load("res://assets/png/Warrior.png")
+	$Sprite/Sword/Sprite.hframes = 3
+	$Sprite/Sword/Sprite.frame = 1
+	if team == Const.TEAM_RED:
+		$Sprite/Sword/Sprite.use_parent_material = true
+
+func set_attack_damage(attack_damage):
+	$Sprite/Sword.damage = attack_damage
+
 func is_dead():
 	return _dead
 
@@ -38,8 +56,14 @@ func die():
 	
 	print("%s just died!" % name)
 	_dead = true
-	emit_signal("died")
 	self_destroy()
+	
+	print("Before: %s" % str(get_groups()))
+	if is_in_group(team):
+		remove_from_group(team)
+	print("After: %s" % str(get_groups()))
+	
+	emit_signal("died")
 
 func self_destroy():
 	yield($AnimationCenter/Die, "animation_finished")

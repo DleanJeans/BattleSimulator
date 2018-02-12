@@ -4,7 +4,7 @@ export(bool) var enabled = true
 export(NodePath) var player_tracker_path
 onready var PlayerTracker = get_node(player_tracker_path)
 
-onready var _player_team = "TeamRed" #= Scene.player_team
+onready var _player_team = Scene.player_team
 
 func choose_randomly_from_player_team():
 	var player = choose_random_from_group(_player_team)
@@ -22,8 +22,13 @@ func choose_random_from_group(group):
 	if warrior_count == 0:
 		return null
 	
-	var random_index = randi() % warrior_count
-	var random_warrior = all_warriors[random_index]
+	var random_warrior
+	while true:
+		var random_index = randi() % warrior_count
+		random_warrior = all_warriors[random_index]
+		
+		if not random_warrior.is_dead():
+			break
 	
 	return random_warrior
 
@@ -41,7 +46,8 @@ func _update_player_tracker(player):
 	PlayerTracker.player = player
 
 func _choose_another_if_player_died(player):
-	player.connect("died", self, "choose_randomly_from_player_team")
+	if not player.is_connected("died", self, "choose_randomly_from_player_team"):
+		player.connect("died", self, "choose_randomly_from_player_team")
 
 func _disable_warrior_ai(player):
 	var warrior_ais = get_tree().get_nodes_in_group(player.team + "WarriorAI")
@@ -51,6 +57,8 @@ func _disable_warrior_ai(player):
 
 func _ready():
 	randomize()
+	if _player_team == null:
+		_player_team = Const.TEAM_PURPLE
 	if enabled:
 		yield(get_tree(), "idle_frame")
 		choose_randomly_from_player_team()

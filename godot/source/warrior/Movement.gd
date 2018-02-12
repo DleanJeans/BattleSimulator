@@ -2,6 +2,12 @@ extends "res://source/warrior/Code.gd"
 
 var velocity = Vector2()
 
+func _ready():
+	if has_node("/root/Battlefield"):
+		set_physics_process(false)
+		yield(get_tree().create_timer(1), "timeout")
+		set_physics_process(true)
+
 func up():
 	towards(Const.UP)
 

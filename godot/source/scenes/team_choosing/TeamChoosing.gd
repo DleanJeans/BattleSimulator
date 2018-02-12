@@ -12,5 +12,6 @@ func _ready():
 
 func start_game(team):
 	print("Starting game with %s" % team)
+	yield(get_tree().create_timer(1), "timeout")
 	Scene.player_team = team
-	get_tree().change_scene(Scene.BattlefieldPath)
+	get_tree().change_scene("res://source/scenes/Battlefield.tscn")

@@ -7,10 +7,10 @@ var target
 var _enabled = true
 
 func _process(delta):
-	var enemy = get_parent().get_enemy()
+	var locator = get_parent().get_locator()
+	var enemy = locator.find_enemy()
 	if enemy == null: return
 	
-	var locator = get_parent().get_locator()
 	var enemy_is_close = locator.is_enemy_close(enemy)
 	
 	if enemy_is_close:

@@ -111,7 +111,7 @@ tracks/0/keys = {
 "values": [ 2.5, 1.25 ]
 }
 
-[node name="Battlefield" type="Node" index="0"]
+[node name="Battlefield" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -153,7 +153,7 @@ scan_node_childen = NodePath("../../World")
 
 script = ExtResource( 5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Mechanics/WinState" index="0"]
+[node name="VolumeSlide" type="AnimationPlayer" parent="Mechanics/WinState" index="0"]
 
 root_node = NodePath("..")
 autoplay = ""

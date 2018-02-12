@@ -56,12 +56,11 @@ func die():
 	
 	print("%s just died!" % name)
 	_dead = true
+	$DieSound.play()
 	self_destroy()
 	
-	print("Before: %s" % str(get_groups()))
 	if is_in_group(team):
 		remove_from_group(team)
-	print("After: %s" % str(get_groups()))
 	
 	emit_signal("died")
 

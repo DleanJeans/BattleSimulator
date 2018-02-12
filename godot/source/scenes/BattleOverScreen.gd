@@ -15,29 +15,32 @@ func win():
 				$DamageBonus2/Warrior.use_parent_material = true
 		3:
 			$Thanks.show()
-			$AgainButton.show()
 			return
 	
-	$NextButton.show()
-	$NextButton.grab_focus()
+	yield(get_tree().create_timer(1), "timeout")
+	$Buttons/NextButton.show()
+	$Buttons/NextButton.grab_focus()
+	$Buttons/AgainButton.show()
 
 func lose():
 	$Label.text = "DEFEAT!"
-	$AgainButton.show()
-	$AgainButton.grab_focus()
 	$DamageBonus.hide()
+	
+	yield(get_tree().create_timer(1), "timeout")
+	$Buttons/AgainButton.show()
+	$Buttons/AgainButton.grab_focus()
 
 func _on_AgainButton_pressed():
 	if Scene.level == 3:
 		Scene.level = 1
-	get_tree().change_scene("res://source/scenes/Battlefield.tscn")
+	get_tree().change_scene(Scene.BattlefieldPath)
 	get_tree().paused = false
 
 func _on_NextButton_pressed():
 	Scene.level += 1
-	get_tree().change_scene("res://source/scenes/Battlefield.tscn")
+	get_tree().change_scene(Scene.BattlefieldPath)
 	get_tree().paused = false
 
 func _on_MainMenu_pressed():
-	get_tree().change_scene("res://source/scenes/TeamChoosing.tscn")
+	get_tree().change_scene(Scene.TeamChoosingPath)
 	Scene.level = 1

@@ -8,6 +8,8 @@ var HealthBarPath = "res://source/gui/health_bars/HealthBar.tscn"
 var BattlefieldPath = "res://source/scenes/Battlefield.tscn"
 var TeamChoosingPath = "res://source/scenes/TeamChoosing.tscn"
 
+var last_music_position = 0
+
 var player
 var player_team = "TeamPurple"
 var level = 1

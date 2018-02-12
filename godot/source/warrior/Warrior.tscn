@@ -18,7 +18,6 @@
 [ext_resource path="res://source/warrior/animations/Die.gd" type="Script" id=16]
 [ext_resource path="res://assets/sfx/Death.ogg" type="AudioStream" id=17]
 
-
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -857,7 +856,7 @@ tracks/9/keys = {
 audio_stream = ExtResource( 17 )
 random_pitch = 1.25
 
-[node name="Warrior" type="KinematicBody2D" groups=[
+[node name="Warrior" type="KinematicBody2D" index="0" groups=[
 "Warriors",
 "TeamRed",
 ]]
@@ -1032,10 +1031,10 @@ anims/DeathFromRight = SubResource( 16 )
 blend_times = [  ]
 script = ExtResource( 16 )
 
-[node name="DieSound" type="AudioStreamPlayer2D" parent="AnimationCenter/Die" index="0"]
+[node name="DieSound" type="AudioStreamPlayer2D" parent="." index="6"]
 
 stream = SubResource( 17 )
-volume_db = 10.0
+volume_db = -5.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -1044,7 +1043,7 @@ area_mask = 1
 
 [connection signal="died" from="." to="AnimationCenter/Die" method="play_dead"]
 
-[connection signal="hit" from="." to="AnimationCenter/Hit" method="_on_Warrior_got_hit"]
+[connection signal="hit_by_weapon" from="." to="AnimationCenter/Hit" method="_on_Warrior_got_hit"]
 
 [connection signal="hit_by_weapon" from="." to="AnimationCenter/Die" method="track_weapon"]
 

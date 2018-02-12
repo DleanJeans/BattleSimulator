@@ -13,5 +13,3 @@ func play_dead():
 		play("DeathFromLeft")
 	else:
 		play("DeathFromRight")
-	
-	$DieSound.play()

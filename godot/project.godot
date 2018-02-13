@@ -16,6 +16,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Game="*res://source/globals/Game.gd"
 Class="*res://source/globals/Class.gd"
 Const="*res://source/globals/Const.gd"
 Scene="*res://source/globals/Scene.gd"

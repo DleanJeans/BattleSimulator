@@ -11,14 +11,7 @@ var _team
 var _troop_ai
 
 func _ready():
-	call("_create_level_%s" % Scene.level)
-	
-#	position.x = 0
-#	position.y += 750
-#
-#	create_troops(Const.TEAM_RED)
-#	position.x += 750
-#	create_troops(Const.TEAM_PURPLE)
+	call("_create_level_%s" % Game.level)
 
 func _create_level_1():
 	create_troops(Const.TEAM_RED, 2, 2)

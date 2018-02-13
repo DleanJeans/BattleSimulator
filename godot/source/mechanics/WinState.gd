@@ -5,7 +5,7 @@ func _ready():
 		warrior.connect("died", self, "_check_win_state")
 
 func _check_win_state():
-	var player_team = Scene.player_team
+	var player_team = Game.player_team
 	var enemy_team = Const.get_enemy_team(player_team)
 	
 	var enemies = get_tree().get_nodes_in_group(enemy_team).size()

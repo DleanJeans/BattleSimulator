@@ -4,7 +4,7 @@ export(bool) var enabled = true
 export(NodePath) var player_tracker_path
 onready var PlayerTracker = get_node(player_tracker_path)
 
-onready var _player_team = Scene.player_team
+onready var _player_team = Game.player_team
 
 func choose_randomly_from_player_team():
 	var player = choose_random_from_group(_player_team)

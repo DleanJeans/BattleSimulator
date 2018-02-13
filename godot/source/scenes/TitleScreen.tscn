@@ -20,6 +20,7 @@ func _slide_down_and_free():
 	$Animations.play(\"SlideDown\")
 	yield($Animations, \"animation_finished\")
 	queue_free()"
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="DynamicFont" id=2]
 
@@ -90,7 +91,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -80 ), Vector2( 0, 540 ) ]
 }
 
-[node name="TitleScreen" type="Container" index="0"]
+[node name="TitleScreen" type="Container"]
 
 anchor_left = 0.0
 anchor_top = 0.0

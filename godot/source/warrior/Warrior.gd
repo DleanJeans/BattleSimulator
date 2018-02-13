@@ -28,7 +28,7 @@ func _ready():
 		Const.TEAM_PURPLE: face.left()
 
 func is_player():
-	return self == Scene.player
+	return self == Game.player
 
 func change_sword():
 	$Sprite/Sword/Sprite.texture = load("res://assets/png/Warrior.png")

@@ -24,7 +24,7 @@ func _ready():
 	scan_warriors()
 	if not has_node("/root/Battlefield"):
 		return
-	match Scene.level:
+	match Game.level:
 		1: warrior_health = 15
 		2: warrior_health = 20
 		3: warrior_health = 25

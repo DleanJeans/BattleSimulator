@@ -1,32 +1,23 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://source/scenes/team_choosing/TeamSelectionScreen.gd" type="Script" id=1]
 [ext_resource path="res://source/mechanics/health/Health.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/mechanics/PlayerControl.tscn" type="PackedScene" id=3]
 [ext_resource path="res://source/warrior/Warrior.tscn" type="PackedScene" id=4]
-[ext_resource path="res://source/scenes/team_choosing/GUI.gd" type="Script" id=5]
-[ext_resource path="res://assets/fonts/Anton-Regular.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://source/font_res/Anton50.tres" type="DynamicFont" id=7]
-[ext_resource path="res://source/gui/health_bars/HealthBarSystem.tscn" type="PackedScene" id=8]
-[ext_resource path="res://source/scenes/TitleScreen.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/sfx/Intro.ogg" type="AudioStream" id=10]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 480, 10 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 65 )
+[ext_resource path="res://source/scenes/team_choosing/Wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://source/scenes/team_choosing/GUI.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/Anton-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://source/font_res/Anton50.tres" type="DynamicFont" id=8]
+[ext_resource path="res://source/gui/health_bars/HealthBarSystem.tscn" type="PackedScene" id=9]
+[ext_resource path="res://source/scenes/TitleScreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/sfx/Intro.ogg" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=3]
 
 size = 20
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="Animation" id=4]
@@ -131,7 +122,7 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[node name="TeamSelectionScreen" type="Node2D" index="0"]
+[node name="TeamSelectionScreen" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -160,37 +151,7 @@ team = "TeamRed"
 position = Vector2( 650, 292 )
 team = "TeamPurple"
 
-[node name="Wall" type="StaticBody2D" parent="World" index="2"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="Shape" type="CollisionShape2D" parent="World/Wall" index="0"]
-
-position = Vector2( 480, 180 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Shape3" type="CollisionShape2D" parent="World/Wall" index="1"]
-
-position = Vector2( 480, 330 )
-shape = SubResource( 1 )
-
-[node name="Shape2" type="CollisionShape2D" parent="World/Wall" index="2"]
-
-position = Vector2( 10, 255 )
-shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Shape4" type="CollisionShape2D" parent="World/Wall" index="3"]
-
-position = Vector2( 950, 255 )
-shape = SubResource( 2 )
+[node name="Wall" parent="World" index="2" instance=ExtResource( 5 )]
 
 [node name="GUI" type="Container" parent="." index="2"]
 
@@ -205,7 +166,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -267,7 +228,7 @@ size_flags_vertical = 1
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/normal = SubResource( 7 )
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 8 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -297,7 +258,7 @@ size_flags_vertical = 1
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/normal = SubResource( 7 )
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 8 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -321,7 +282,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 8 )
 text = "CHOOSE YOUR SIDE"
 align = 1
 percent_visible = 1.0
@@ -329,16 +290,16 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility", "custom_fonts" ]
 
-[node name="HealthBars" parent="GUI" index="5" instance=ExtResource( 8 )]
+[node name="HealthBars" parent="GUI" index="5" instance=ExtResource( 9 )]
 
 visible = false
 health_mechanic_path = NodePath("../../Mechanics/Health")
 
-[node name="TitleScreen" parent="." index="3" instance=ExtResource( 9 )]
+[node name="TitleScreen" parent="." index="3" instance=ExtResource( 10 )]
 
 [node name="Intro" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 volume_db = 0.0
 autoplay = true
 mix_target = 0

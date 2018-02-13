@@ -1,80 +1,21 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://source/scenes/Battlefield.gd" type="Script" id=1]
+[ext_resource path="res://source/scenes/battlefield/Battlefield.gd" type="Script" id=1]
 [ext_resource path="res://source/helpers/troop_creator/TroopCreator.gd" type="Script" id=2]
 [ext_resource path="res://source/helpers/player_randomizer/PlayerRandomizer.gd" type="Script" id=3]
-[ext_resource path="res://source/mechanics/health/Health.gd" type="Script" id=4]
-[ext_resource path="res://source/mechanics/WinState.gd" type="Script" id=5]
-[ext_resource path="res://assets/sfx/Cheer.ogg" type="AudioStream" id=6]
-[ext_resource path="res://assets/sfx/Defeat.ogg" type="AudioStream" id=7]
-[ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=8]
-[ext_resource path="res://source/gui/health_bars/HealthBarSystem.tscn" type="PackedScene" id=9]
-[ext_resource path="res://source/gui/player_indicator/PlayerIndicator.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/sfx/OurMusicBox - When Good Prevails.ogg" type="AudioStream" id=11]
-[ext_resource path="res://assets/sfx/BattleCry.ogg" type="AudioStream" id=12]
+[ext_resource path="res://source/mechanics/PlayerControl.gd" type="Script" id=4]
+[ext_resource path="res://source/mechanics/PlayerTracker.gd" type="Script" id=5]
+[ext_resource path="res://source/mechanics/health/Health.gd" type="Script" id=6]
+[ext_resource path="res://source/mechanics/WinState.gd" type="Script" id=7]
+[ext_resource path="res://assets/sfx/Cheer.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/sfx/Defeat.ogg" type="AudioStream" id=9]
+[ext_resource path="res://source/gui/camera/PlayerCamera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://source/gui/health_bars/HealthBarSystem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://source/gui/player_indicator/PlayerIndicator.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/sfx/OurMusicBox - When Good Prevails.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/sfx/BattleCry.ogg" type="AudioStream" id=14]
 
-[sub_resource type="GDScript" id=3]
-
-script/source = "extends Node
-
-export(NodePath) var player_path
-export(NodePath) var health_mechanic_path
-
-const UP = \"up\"
-const DOWN = \"down\"
-const LEFT = \"left\"
-const RIGHT = \"right\"
-const ATTACK = \"attack\"
-
-func _physics_process(delta):
-	var player = get_player()
-	
-	if player == null or _player_is_dead(): return
-	
-	if Input.is_action_pressed(UP):
-		player.move.up()
-	if Input.is_action_pressed(DOWN):
-		player.move.down()
-	if Input.is_action_pressed(LEFT):
-		player.move.left()
-	if Input.is_action_pressed(RIGHT):
-		player.move.right()
-	
-	if Input.is_action_just_pressed(ATTACK):
-		player.attack()
-
-func _player_is_dead():
-	return get_player().is_dead()
-
-func set_player(new_player):
-	player_path = new_player.get_path()
-
-func get_player():
-	if player_path == null:
-		return null
-	return get_node(player_path)"
-
-[sub_resource type="GDScript" id=2]
-
-script/source = "extends Node
-
-signal player_changed(warrior)
-
-var player setget set_player
-
-func set_player(warrior):
-	player = warrior
-	emit_signal(\"player_changed\", warrior)
-	Scene.player = warrior
-	
-	match Scene.level:
-		2:
-			player.set_attack_damage(3)
-		3:
-			player.change_sword()
-			player.set_attack_damage(5)"
-
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 
 resource_name = "."
 length = 0.5
@@ -93,7 +34,7 @@ tracks/0/keys = {
 "values": [ 0.0, -40.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 
 length = 2.0
 loop = false
@@ -135,23 +76,23 @@ player_tracker_path = NodePath("../../Mechanics/PlayerTracker")
 
 [node name="PlayerControl" type="Node" parent="Mechanics" index="0"]
 
-script = SubResource( 3 )
+script = ExtResource( 4 )
 player_path = null
 health_mechanic_path = null
 
 [node name="PlayerTracker" type="Node" parent="Mechanics" index="1"]
 
-script = SubResource( 2 )
+script = ExtResource( 5 )
 
 [node name="Health" type="Node" parent="Mechanics" index="2"]
 
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 warrior_health = 20
 scan_node_childen = NodePath("../../World")
 
 [node name="WinState" type="Node" parent="Mechanics" index="3"]
 
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="VolumeSlide" type="AnimationPlayer" parent="Mechanics/WinState" index="0"]
 
@@ -160,12 +101,12 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/. = SubResource( 4 )
+anims/. = SubResource( 1 )
 blend_times = [  ]
 
 [node name="Victory" type="AudioStreamPlayer" parent="Mechanics/WinState" index="1"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 8 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -173,7 +114,7 @@ bus = "Master"
 
 [node name="Defeat" type="AudioStreamPlayer" parent="Mechanics/WinState" index="2"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 9 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -188,7 +129,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="GUI" type="Node2D" parent="." index="4"]
 
-[node name="PlayerCamera" parent="GUI" index="0" instance=ExtResource( 8 )]
+[node name="PlayerCamera" parent="GUI" index="0" instance=ExtResource( 10 )]
 
 pause_mode = 2
 position = Vector2( 480, 270 )
@@ -202,21 +143,21 @@ autoplay = "ZoomIn"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/ZoomIn = SubResource( 5 )
+anims/ZoomIn = SubResource( 2 )
 blend_times = [  ]
 
-[node name="HealthBars" parent="GUI" index="1" instance=ExtResource( 9 )]
+[node name="HealthBars" parent="GUI" index="1" instance=ExtResource( 11 )]
 
 health_mechanic_path = NodePath("../../Mechanics/Health")
 
-[node name="PlayerIndicator" parent="GUI" index="2" instance=ExtResource( 10 )]
+[node name="PlayerIndicator" parent="GUI" index="2" instance=ExtResource( 12 )]
 
 offset = Vector2( 0, -170 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="InGame" type="AudioStreamPlayer" parent="." index="5"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 13 )
 volume_db = 0.0
 autoplay = true
 mix_target = 0
@@ -224,16 +165,16 @@ bus = "Master"
 
 [node name="Battlecry" type="AudioStreamPlayer" parent="." index="6"]
 
-stream = ExtResource( 12 )
+stream = ExtResource( 14 )
 volume_db = 5.0
 autoplay = true
 mix_target = 0
 bus = "Master"
 
-[connection signal="player_changed" from="Mechanics/PlayerTracker" to="Mechanics/PlayerControl" method="set_player"]
+[connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerIndicator" method="set_player"]
 
 [connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerCamera" method="set_player"]
 
-[connection signal="player_changed" from="Mechanics/PlayerTracker" to="GUI/PlayerIndicator" method="set_player"]
+[connection signal="player_changed" from="Mechanics/PlayerTracker" to="Mechanics/PlayerControl" method="set_player"]
 
 

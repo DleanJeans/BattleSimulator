@@ -7,14 +7,15 @@ func _ready():
 func win():
 	$Label.text = "VICTORY!"
 	
-	match Scene.level:
+	match Game.level:
 		1: $DamageBonus.show()
 		2:
 			$DamageBonus2.show()
-			if Scene.player_team == Const.TEAM_RED:
+			if Game.player_team == Const.TEAM_RED:
 				$DamageBonus2/Warrior.use_parent_material = true
 		3:
 			$Thanks.show()
+			$Buttons/AgainButton.show()
 			return
 	
 	yield(get_tree().create_timer(1), "timeout")
@@ -31,16 +32,16 @@ func lose():
 	$Buttons/AgainButton.grab_focus()
 
 func _on_AgainButton_pressed():
-	if Scene.level == 3:
-		Scene.level = 1
+	if Game.level == 3:
+		Game.level = 1
 	get_tree().change_scene(Scene.BattlefieldPath)
 	get_tree().paused = false
 
 func _on_NextButton_pressed():
-	Scene.level += 1
+	Game.level += 1
 	get_tree().change_scene(Scene.BattlefieldPath)
 	get_tree().paused = false
 
 func _on_MainMenu_pressed():
 	get_tree().change_scene(Scene.TeamChoosingPath)
-	Scene.level = 1
+	Game.level = 1

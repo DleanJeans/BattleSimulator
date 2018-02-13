@@ -1,16 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://source/ai/steering/Steering.gd" type="Script" id=1]
 [ext_resource path="res://source/ai/steering/behaviors/Seek.gd" type="Script" id=2]
 [ext_resource path="res://source/ai/steering/behaviors/Arrive.gd" type="Script" id=3]
 [ext_resource path="res://source/ai/steering/behaviors/Flee.gd" type="Script" id=4]
-[ext_resource path="res://source/ai/steering/behaviors/Separation.gd" type="Script" id=5]
-
-[sub_resource type="CapsuleShape2D" id=1]
-
-custom_solver_bias = 0.0
-radius = 10.0
-height = 20.0
 
 [node name="Steering" type="Node"]
 
@@ -37,33 +30,5 @@ deceleration = 0.5
 script = ExtResource( 4 )
 multiplier = 1
 is_on = false
-
-[node name="Separation" type="Node" parent="." index="3"]
-
-script = ExtResource( 5 )
-multiplier = 1
-is_on = false
-threshold_scale = 2
-decay_coefficient = 1
-max_speed = 100
-
-[node name="ThresholdArea" type="Area2D" parent="Separation" index="0"]
-
-scale = Vector2( 2, 2 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 0
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Collision", "Transform" ]
-
-[node name="Shape" type="CollisionShape2D" parent="Separation/ThresholdArea" index="0"]
-
-rotation = 1.5708
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
 
 

@@ -9,8 +9,8 @@
 [ext_resource path="res://assets/fonts/Anton-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://source/font_res/Anton50.tres" type="DynamicFont" id=8]
 [ext_resource path="res://source/gui/health_bars/HealthBarSystem.tscn" type="PackedScene" id=9]
-[ext_resource path="res://source/scenes/TitleScreen.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/sfx/Intro.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/sfx/Intro.ogg" type="AudioStream" id=10]
+[ext_resource path="res://source/scenes/TitleScreen.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=3]
 
@@ -122,7 +122,7 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[node name="TeamSelectionScreen" type="Node2D"]
+[node name="TeamSelectionScreen" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -189,7 +189,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 3 )
-text = "KILL to START:
+text = "KILL THE OTHER GUY to START:
 WASD or ARROW KEYS to MOVE
 SPACE to ATTACK"
 align = 1
@@ -295,15 +295,15 @@ _sections_unfolded = [ "Visibility", "custom_fonts" ]
 visible = false
 health_mechanic_path = NodePath("../../Mechanics/Health")
 
-[node name="TitleScreen" parent="." index="3" instance=ExtResource( 10 )]
+[node name="Intro" type="AudioStreamPlayer" parent="." index="3"]
 
-[node name="Intro" type="AudioStreamPlayer" parent="." index="4"]
-
-stream = ExtResource( 11 )
+stream = ExtResource( 10 )
 volume_db = 0.0
 autoplay = true
 mix_target = 0
 bus = "Master"
+
+[node name="TitleScreen" parent="." index="4" instance=ExtResource( 11 )]
 
 [connection signal="pressed" from="GUI/ButtonRed" to="GUI" method="_on_ButtonRed_pressed"]
 

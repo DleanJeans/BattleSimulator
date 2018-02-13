@@ -8,11 +8,11 @@ func win():
 	$Label.text = "VICTORY!"
 	
 	match Game.level:
-		1: $DamageBonus.show()
+		1: $DamageBonuses/Level1.show()
 		2:
-			$DamageBonus2.show()
+			$DamageBonuses/Level2.show()
 			if Game.player_team == Const.TEAM_RED:
-				$DamageBonus2/Warrior.use_parent_material = true
+				$DamageBonuses/Level2/C/Warrior.use_parent_material = true
 		3:
 			$Thanks.show()
 			$Buttons/AgainButton.show()
@@ -25,7 +25,7 @@ func win():
 
 func lose():
 	$Label.text = "DEFEAT!"
-	$DamageBonus.hide()
+	$DamageBonuses.hide()
 	
 	yield(get_tree().create_timer(1), "timeout")
 	$Buttons/AgainButton.show()

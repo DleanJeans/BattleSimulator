@@ -158,7 +158,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 [node name="InGame" type="AudioStreamPlayer" parent="." index="5"]
 
 stream = ExtResource( 13 )
-volume_db = 0.0
+volume_db = -40.0
 autoplay = true
 mix_target = 0
 bus = "Master"

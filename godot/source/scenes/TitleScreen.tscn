@@ -60,7 +60,7 @@ length = 2.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Instructions:self_modulate")
+tracks/0/path = NodePath("Instruction:self_modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -193,15 +193,15 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Instructions" type="Label" parent="." index="2"]
+[node name="Instruction" type="Label" parent="." index="2"]
 
 self_modulate = Color( 1, 1, 1, 0.876142 )
 anchor_left = 0.0
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -130.0
-margin_bottom = -78.0
+anchor_bottom = 0.5
+margin_top = 30.0
+margin_bottom = 82.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -223,7 +223,7 @@ anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -70.0
+margin_top = -120.0
 margin_bottom = -15.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
@@ -233,7 +233,9 @@ size_flags_vertical = 4
 custom_fonts/font = SubResource( 5 )
 custom_constants/line_spacing = -5
 text = "A JAM GAME BY DLEANJEANS
-CREATED FOR WEEKLY GAME JAM 30"
+CREATED FOR WEEKLY GAME JAM 30
+MUSIC BY LOLHANK (PLAYING RIGHT NOW)
+AND OURMUSICBOX.COM "
 align = 1
 percent_visible = 1.0
 lines_skipped = 0

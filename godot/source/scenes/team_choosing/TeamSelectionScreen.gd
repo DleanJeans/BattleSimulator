@@ -15,4 +15,4 @@ func start_game(team):
 	
 	print("Starting game with %s" % team)
 	Game.player_team = team
-	get_tree().change_scene("res://source/scenes/Battlefield.tscn")
+	get_tree().change_scene(Scene.BattlefieldPath)

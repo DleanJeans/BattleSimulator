@@ -17,7 +17,7 @@ func _check_win_state():
 		_open_battle_over_screen(false)
 
 func _open_battle_over_screen(win):
-	var battle_over_screen = load("res://source/scenes/BattleOverScreen.tscn").instance()
+	var battle_over_screen = Scene.BattleOverScreen.instance()
 	add_child(battle_over_screen)
 	if win:
 		battle_over_screen.win()
@@ -25,4 +25,4 @@ func _open_battle_over_screen(win):
 	else:
 		battle_over_screen.lose()
 		$Defeat.play()
-		$VolumeSlide.play(".")
+	$VolumeSlide.play(".")

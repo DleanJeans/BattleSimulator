@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://source/scenes/team_choosing/TeamChoosing.gd" type="Script" id=1]
+[ext_resource path="res://source/scenes/team_choosing/TeamSelectionScreen.gd" type="Script" id=1]
 [ext_resource path="res://source/mechanics/health/Health.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/mechanics/PlayerControl.tscn" type="PackedScene" id=3]
 [ext_resource path="res://source/warrior/Warrior.tscn" type="PackedScene" id=4]
@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/fonts/Anton-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://source/font_res/Anton50.tres" type="DynamicFont" id=7]
 [ext_resource path="res://source/gui/health_bars/HealthBarSystem.tscn" type="PackedScene" id=8]
-[ext_resource path="res://source/scenes/MainMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://source/scenes/TitleScreen.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sfx/Intro.ogg" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -131,7 +131,7 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[node name="TeamChoosing" type="Node2D"]
+[node name="TeamSelectionScreen" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -334,7 +334,7 @@ _sections_unfolded = [ "Visibility", "custom_fonts" ]
 visible = false
 health_mechanic_path = NodePath("../../Mechanics/Health")
 
-[node name="MainMenu" parent="." index="3" instance=ExtResource( 9 )]
+[node name="TitleScreen" parent="." index="3" instance=ExtResource( 9 )]
 
 [node name="Intro" type="AudioStreamPlayer" parent="." index="4"]
 

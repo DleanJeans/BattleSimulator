@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="WeeklyJam30"
-run/main_scene="res://source/scenes/TeamChoosing.tscn"
+run/main_scene="res://source/scenes/TeamSelectionScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

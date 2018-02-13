@@ -11,7 +11,8 @@ func _ready():
 	team_purple.connect("died", self, "start_game", [team_red.name])
 
 func start_game(team):
-	print("Starting game with %s" % team)
 	yield(get_tree().create_timer(1), "timeout")
+	
+	print("Starting game with %s" % team)
 	Scene.player_team = team
 	get_tree().change_scene("res://source/scenes/Battlefield.tscn")

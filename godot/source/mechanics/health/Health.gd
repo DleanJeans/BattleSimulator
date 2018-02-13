@@ -27,7 +27,7 @@ func _ready():
 	match Game.level:
 		1: warrior_health = 15
 		2: warrior_health = 20
-		3: warrior_health = 25
+		3: warrior_health = 30
 
 func scan_warriors():
 	for node in _node_to_scan.get_children():

@@ -31,11 +31,15 @@ func is_player():
 	return self == Game.player
 
 func change_sword():
-	$Sprite/Sword/Sprite.texture = load("res://assets/png/Warrior.png")
-	$Sprite/Sword/Sprite.hframes = 3
-	$Sprite/Sword/Sprite.frame = 1
-	if team == Const.TEAM_RED:
-		$Sprite/Sword/Sprite.use_parent_material = true
+	match Game.level:
+		2:
+			$Sprite/Sword/Sprite.flip_v = true
+		3:
+			$Sprite/Sword/Sprite.texture = load("res://assets/png/Warrior.png")
+			$Sprite/Sword/Sprite.hframes = 3
+			$Sprite/Sword/Sprite.frame = 1
+			if team == Const.TEAM_RED:
+				$Sprite/Sword/Sprite.use_parent_material = true
 
 func set_attack_damage(attack_damage):
 	$Sprite/Sword.damage = attack_damage
@@ -81,6 +85,4 @@ func set_team(team_name):
 	
 	team = team_name
 	yield(self, "tree_entered")
-#	if is_inside_tree() and has_node("Code/Team"):
-#	if has_node("Code/Team"):
 	$Code/Team.set_team(team_name)

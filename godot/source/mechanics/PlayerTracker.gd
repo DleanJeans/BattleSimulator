@@ -11,6 +11,7 @@ func set_player(warrior):
 	
 	match Game.level:
 		2:
+			player.change_sword()
 			player.set_attack_damage(3)
 		3:
 			player.change_sword()

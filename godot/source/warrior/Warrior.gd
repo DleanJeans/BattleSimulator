@@ -21,11 +21,23 @@ onready var attack_animation = $AnimationCenter/Attack
 
 var velocity setget , get_velocity
 var _dead = false
+var _is_leader = false
 
 func _ready():
 	match team:
 		Const.TEAM_RED: face.right()
 		Const.TEAM_PURPLE: face.left()
+
+func set_leader():
+	_is_leader = true
+	set_attack_damage(get_attack_damage() * 2)
+	scale *= 1.5
+
+func get_attack_damage():
+	return $Sprite/Sword.damage
+
+func is_leader():
+	return _is_leader
 
 func is_player():
 	return self == Game.player

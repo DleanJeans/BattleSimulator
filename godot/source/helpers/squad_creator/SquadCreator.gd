@@ -1,5 +1,8 @@
 extends Node2D
 
+const RIGHT_SIDE = 1
+const LEFT_SIDE = -0.5
+
 export(Vector2) var spacing = Vector2(100, 100)
 export(NodePath) var world_path
 export(NodePath) var ai_core_path
@@ -33,7 +36,7 @@ func _create_level_3():
 	position.y -= 600
 	create_squad(Const.TEAM_PURPLE)
 
-func create_squad(team, leader_side = Const.RIGHT, rows = 2, columns = 5):
+func create_squad(team, rows = 2, columns = 5):
 	_team = team
 	_setup_ai_if_path_provided()
 	_troop_ai.set_team(team)
@@ -42,7 +45,12 @@ func create_squad(team, leader_side = Const.RIGHT, rows = 2, columns = 5):
 		for y in range(0, columns):
 			create_warrior(x, y)
 	
-	create_warrior(rows * leader_side.x, 0.5 * columns / 2)
+	var leader_side = RIGHT_SIDE if team == Const.TEAM_RED else LEFT_SIDE
+	var leader_row = rows * leader_side
+	var leader_column = 0.5 * (columns - 1)
+	
+	var leader = create_warrior(leader_row, leader_column)
+	leader.set_leader()
 
 func _setup_ai_if_path_provided():
 	if ai_core_path != null:
@@ -62,3 +70,5 @@ func create_warrior(row, column):
 		var ai = Scene.WarriorAI.instance()
 		_troop_ai.add_child(ai)
 		ai.set_character(warrior)
+	
+	return warrior

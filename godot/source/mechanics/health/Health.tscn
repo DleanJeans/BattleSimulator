@@ -5,7 +5,7 @@
 [node name="Health" type="Node"]
 
 script = ExtResource( 1 )
-WARRIOR_HEALTH = 5
+warrior_health = 20
 scan_node_childen = NodePath("../../World")
 
 

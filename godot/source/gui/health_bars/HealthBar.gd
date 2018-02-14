@@ -20,7 +20,16 @@ func set_warrior(warrior):
 		Const.TEAM_PURPLE: color = Const.PURPLE
 	
 	modulate = color
+	
+	if warrior.is_leader():
+		rect_scale *= 1.5
+		
 
 func _on_health_changed(health):
 	show()
 	value = health
+	_fix_weird_gui_bug()
+	
+func _fix_weird_gui_bug():
+	if warrior.is_leader() and value <= 2:
+		value = 3

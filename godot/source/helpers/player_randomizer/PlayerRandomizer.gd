@@ -17,20 +17,26 @@ func choose_randomly_from_team(team):
 
 func choose_random_from_group(group):
 	var all_warriors = get_tree().get_nodes_in_group(group)
-	var warrior_count = all_warriors.size()
-	
-	if warrior_count == 0:
-		return null
 	
 	var random_warrior
 	while true:
+		var warrior_count = all_warriors.size()
+		
+		if warrior_count == 0:
+			return null
+		
 		var random_index = randi() % warrior_count
 		random_warrior = all_warriors[random_index]
 		
-		if not random_warrior.is_dead():
+		if _filter_warrior(random_warrior):
+			all_warriors.erase(random_warrior)
+		else:
 			break
 	
 	return random_warrior
+
+func _filter_warrior(warrior):
+	return warrior.is_dead() or warrior.is_leader()
 
 func choose_randomly():
 	var player = choose_random_from_group("Warriors")

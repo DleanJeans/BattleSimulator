@@ -35,6 +35,8 @@ func scan_warriors():
 			add_warrior(node)
 
 func add_warrior(warrior, health = warrior_health):
+	if warrior.is_leader():
+		health *= 4
 	_create_health_data(warrior, health)
 	_set_processed_warrior(warrior)
 	_connect_signals()

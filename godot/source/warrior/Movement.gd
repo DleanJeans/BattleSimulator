@@ -20,6 +20,11 @@ func left():
 func right():
 	towards(Const.RIGHT)
 
+func at(speed):
+	if warrior.animation_center.is_attacking(): return
+	
+	velocity += speed
+
 func towards(direction):
 	if warrior.animation_center.is_attacking(): return
 	

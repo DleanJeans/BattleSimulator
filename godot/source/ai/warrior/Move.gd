@@ -1,10 +1,16 @@
 extends "res://source/ai/BaseMove.gd"
 
 func _process(delta):
-	var enemy = get_parent().get_enemy()
-	if enemy == null: return
-	
 	var locator = get_parent().get_locator()
+	var enemy = get_parent().get_enemy()
+	
+	if enemy == null:
+		yield(get_tree(), "idle_frame")
+		enemy = locator.find_enemy()
+		if enemy != null:
+			get_parent()._set_enemy(enemy)
+		return
+	
 	var enemy_is_too_close = locator.is_enemy_too_close(enemy)
 	
 	if  enemy_is_too_close:

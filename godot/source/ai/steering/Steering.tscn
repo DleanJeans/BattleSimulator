@@ -23,7 +23,7 @@ script = ExtResource( 3 )
 multiplier = 1
 is_on = false
 max_speed = 250
-deceleration = 0.5
+deceleration = 2.0
 
 [node name="Flee" type="Node" parent="." index="2"]
 

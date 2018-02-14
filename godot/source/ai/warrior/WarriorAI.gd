@@ -20,7 +20,7 @@ func _ready():
 	$Locator.connect("enemy_detected_nearby", self, "_set_enemy")
 
 func _set_enemy(enemy):
-	if _enemy != null: return
+	if _enemy != null and not _enemy.is_dead(): return
 	
 	_enemy = enemy
 	if enemy is Class.WarriorAI:
@@ -32,7 +32,7 @@ func _on_enemy_died():
 
 func _move_towards(direction):
 	if _enemy == null:
-		get_character().move.towards(direction)
+		get_character().move.at(direction)
 
 func _physics_process(delta):
 	_update_position()

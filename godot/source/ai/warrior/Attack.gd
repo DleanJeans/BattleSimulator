@@ -8,12 +8,12 @@ var _enabled = true
 
 func _process(delta):
 	var locator = get_parent().get_locator()
-	var enemy = locator.find_enemy()
+	var enemy = get_parent().get_enemy()
 	if enemy == null: return
 	
-	var enemy_is_close = locator.is_enemy_close(enemy)
+	var enemy_is_too_close = locator.is_enemy_too_close(enemy)
 	
-	if enemy_is_close:
+	if enemy_is_too_close:
 		attack()
 	else: stop()
 

@@ -6,7 +6,12 @@ func _process(delta):
 	
 	if enemy == null: return
 	
-	to(enemy)
+	var direction = enemy.global_position - get_parent().global_position
+	var distance_to_enemy = direction.length()
+	
+	if distance_to_enemy > 250:
+		to(enemy)
+	else: stop()
 
 func _ready():
 	set_physics_process(true)

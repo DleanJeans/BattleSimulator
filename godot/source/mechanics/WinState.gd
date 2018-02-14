@@ -17,6 +17,10 @@ func _check_win_state():
 		_open_battle_over_screen(false)
 
 func _open_battle_over_screen(win):
+	if has_node("BattleOverScreen"):
+		print("Already has a BattleOverScreen! Cancelling...")
+		return
+	
 	var battle_over_screen = Scene.BattleOverScreen.instance()
 	add_child(battle_over_screen)
 	if win:

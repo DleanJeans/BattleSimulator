@@ -25,7 +25,9 @@ func _set_enemy(enemy):
 	_enemy = enemy
 	if enemy is Class.WarriorAI:
 		enemy = enemy.get_character()
-	enemy.connect("died", self, "_on_enemy_died")
+	
+	if not enemy.is_connected("died", self, "_on_enemy_died"):
+		enemy.connect("died", self, "_on_enemy_died")
 
 func _on_enemy_died():
 	_enemy = null

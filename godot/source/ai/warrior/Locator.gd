@@ -46,3 +46,8 @@ func _get_friendly_team():
 func _on_NearbyArea_body_entered(body):
 	if body.is_in_group(_get_enemy_team()):
 		emit_signal("enemy_detected_nearby", body)
+
+func _process(delta):
+	var character = get_parent().get_character()
+	var angle = character.move.velocity.angle_to_point(Vector2())
+	$NearbyArea.rotation = angle

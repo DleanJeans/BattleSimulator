@@ -15,8 +15,6 @@
 [ext_resource path="res://assets/sfx/OurMusicBox - When Good Prevails.ogg" type="AudioStream" id=13]
 [ext_resource path="res://assets/sfx/BattleCry.ogg" type="AudioStream" id=14]
 
-
-
 [sub_resource type="Animation" id=1]
 
 resource_name = "."

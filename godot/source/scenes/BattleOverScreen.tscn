@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://source/scenes/BattleOverScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Rubik-Black.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/fonts/Anton-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/png/Warrior.png" type="Texture" id=6]
 [ext_resource path="res://source/warrior/PurplizerShader.tres" type="Material" id=7]
+[ext_resource path="res://source/ButtonStyle.tres" type="StyleBox" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -24,7 +25,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 
 size = 50
 use_mipmaps = false
@@ -263,7 +264,9 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/focus = ExtResource( 8 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -271,7 +274,7 @@ group = null
 text = "AGAIN!"
 flat = true
 align = 1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
 
 [node name="NextButton" type="Button" parent="Buttons" index="1"]
 
@@ -288,7 +291,9 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/focus = ExtResource( 8 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -296,7 +301,7 @@ group = null
 text = "NEXT BATTLE!"
 flat = true
 align = 1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
 
 [connection signal="pressed" from="Buttons/AgainButton" to="." method="_on_AgainButton_pressed"]
 

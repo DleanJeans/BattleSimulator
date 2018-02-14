@@ -325,7 +325,7 @@ tracks/1/keys = {
 resource_name = "Down"
 length = 0.5
 loop = false
-step = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Sprite:rotation_degrees")
 tracks/0/interp = 1
@@ -369,7 +369,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.23, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -448,7 +448,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.23, 0.3 ),
+"times": PoolRealArray( 0, 0.25, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -503,7 +503,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.23, 0.3 ),
+"times": PoolRealArray( 0, 0.25, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -514,7 +514,7 @@ tracks/3/keys = {
 resource_name = "Up"
 length = 0.5
 loop = false
-step = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Sprite:rotation_degrees")
 tracks/0/interp = 1
@@ -558,7 +558,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.24, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -857,8 +857,8 @@ audio_stream = ExtResource( 17 )
 random_pitch = 1.25
 
 [node name="Warrior" type="KinematicBody2D" index="0" groups=[
-"Warriors",
 "TeamRed",
+"Warriors",
 ]]
 
 material = ExtResource( 1 )
@@ -922,7 +922,7 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Transform", "Visibili
 [node name="Sword" parent="Sprite" index="0" instance=ExtResource( 6 )]
 
 material = ExtResource( 1 )
-position = Vector2( -15, -40 )
+position = Vector2( -20, -35 )
 monitorable = true
 collision_mask = 3072
 _sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "collision" ]
@@ -930,6 +930,7 @@ damage = 2
 
 [node name="Sprite" parent="Sprite/Sword" index="0"]
 
+flip_h = false
 _sections_unfolded = [ "Animation", "Material", "Offset", "Transform", "Visibility" ]
 
 [node name="Code" type="Node" parent="." index="4"]
@@ -1043,9 +1044,9 @@ area_mask = 1
 
 [connection signal="died" from="." to="AnimationCenter/Die" method="play_dead"]
 
-[connection signal="hit_by_weapon" from="." to="AnimationCenter/Hit" method="_on_Warrior_got_hit"]
-
 [connection signal="hit_by_weapon" from="." to="AnimationCenter/Die" method="track_weapon"]
+
+[connection signal="hit_by_weapon" from="." to="AnimationCenter/Hit" method="_on_Warrior_got_hit"]
 
 [connection signal="area_entered" from="HitArea" to="HitArea" method="_on_area_entered"]
 

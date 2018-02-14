@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://source/helpers/troop_creator/TroopCreator.gd" type="Script" id=1]
+[ext_resource path="res://source/helpers/squad_creator/SquadCreator.gd" type="Script" id=1]
 
-
-[node name="TroopCreator" type="Node2D"]
+[node name="SquadCreator" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 spacing = Vector2( 100, 100 )

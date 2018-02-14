@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://source/ai/troop/TroopAI.gd" type="Script" id=1]
-[ext_resource path="res://source/ai/troop/Move.gd" type="Script" id=2]
+[ext_resource path="res://source/ai/squad/SquadAI.gd" type="Script" id=1]
+[ext_resource path="res://source/ai/squad/Move.gd" type="Script" id=2]
 [ext_resource path="res://source/ai/steering/Steering.tscn" type="PackedScene" id=3]
-[ext_resource path="res://source/ai/troop/Locator.gd" type="Script" id=4]
+[ext_resource path="res://source/ai/squad/Locator.gd" type="Script" id=4]
 
-[node name="TroopAI" type="Node2D"]
+[node name="SquadAI" type="Node2D"]
 
 script = ExtResource( 1 )
 thoughts_per_second = 5

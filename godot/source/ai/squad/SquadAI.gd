@@ -9,7 +9,7 @@ var _team
 
 func set_team(team):
 	_team = team
-	add_to_group(team + "TroopAI")
+	add_to_group(team + "SquadAI")
 
 func get_ai_core():
 	return get_parent()

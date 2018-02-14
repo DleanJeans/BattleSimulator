@@ -6,7 +6,7 @@ const LEFT = Vector2(-1, 0)
 const RIGHT = Vector2(1, 0)
 
 const WARRIOR_AI = "WarriorAI"
-const TROOP_AI = "TroopAI"
+const SQUAD_AI = "SquadAI"
 
 const TEAM_RED = "TeamRed"
 const TEAM_PURPLE = "TeamPurple"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://source/scenes/battlefield/Battlefield.gd" type="Script" id=1]
-[ext_resource path="res://source/helpers/troop_creator/TroopCreator.gd" type="Script" id=2]
+[ext_resource path="res://source/helpers/squad_creator/SquadCreator.gd" type="Script" id=2]
 [ext_resource path="res://source/helpers/player_randomizer/PlayerRandomizer.gd" type="Script" id=3]
 [ext_resource path="res://source/mechanics/PlayerControl.gd" type="Script" id=4]
 [ext_resource path="res://source/mechanics/PlayerTracker.gd" type="Script" id=5]
@@ -14,6 +14,8 @@
 [ext_resource path="res://source/gui/player_indicator/PlayerIndicator.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/sfx/OurMusicBox - When Good Prevails.ogg" type="AudioStream" id=13]
 [ext_resource path="res://assets/sfx/BattleCry.ogg" type="AudioStream" id=14]
+
+
 
 [sub_resource type="Animation" id=1]
 
@@ -58,7 +60,7 @@ script = ExtResource( 1 )
 
 [node name="Helpers" type="Node" parent="." index="0"]
 
-[node name="TroopCreator" type="Node2D" parent="Helpers" index="0"]
+[node name="SquadCreator" type="Node2D" parent="Helpers" index="0"]
 
 position = Vector2( 85, 75 )
 script = ExtResource( 2 )
